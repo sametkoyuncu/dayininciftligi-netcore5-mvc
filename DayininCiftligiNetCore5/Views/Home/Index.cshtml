@@ -1,0 +1,29 @@
+﻿@model List<Section>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Navbar
+{
+    @await Component.InvokeAsync("NavbarComponent")
+}
+
+@await Component.InvokeAsync("HomeBannerComponent")
+
+@foreach (var item in Model)
+{
+    ViewData[item.ComponentName] = new SectionModel()
+    {
+        Name = item.Name,
+        Description = item.Description,
+        ButtonText = item.ButtonText,
+        ButtonUrl = item.ButtonUrl
+    };
+    @await Component.InvokeAsync(item.ComponentName)
+}
+
+@section Scripts
+{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

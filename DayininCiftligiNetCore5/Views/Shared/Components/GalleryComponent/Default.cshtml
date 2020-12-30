@@ -1,0 +1,32 @@
+﻿@model List<GalleryImage>
+<!--================ Galeri Area ====================-->
+@{ 
+    var sectionData = ViewData["GalleryComponent"] as SectionModel;
+}
+<section class="galeri area-padding-top" id="galeri">
+    <div class="container">
+        <h1 class="text-center">@sectionData.Name</h1>
+
+        <p class="page-description text-center">@sectionData.Description</p>
+
+        <div class="tz-gallery">
+
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="@item.ImageUrl">
+                            <img src="@item.ImageUrl" alt="@item.ImageAltText">
+                        </a>
+                    </div>
+                }
+                <div class="mx-auto">
+                    <a type="button" class="galeri-baglanti" href="/Galeri">@sectionData.ButtonText</a>
+                    @*<a type="button" class="galeri-baglanti" href="@sectionData.ButtonUrl">@sectionData.ButtonText</a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--================Galeri Area End==================-->

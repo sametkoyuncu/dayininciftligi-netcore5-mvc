@@ -1,0 +1,20 @@
+﻿@model HomeBanner
+<!--================Home Banner Area =================-->
+<section class="home_banner_area" style="background: url(@Model.BgImageUrl) !important" id="giris">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-6 col-xl-5 offset-xl-7">
+                    <div class="banner_content">
+                        <h3>@Model.Header</h3>
+                        <p>@Model.Text</p>
+                        <a class="banner_btn nav-link button p-0 pl-3" onclick="smoothScroll(document.getElementById('@Model.ButtonUrl'))">@Model.ButtonText<i class="ti-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->

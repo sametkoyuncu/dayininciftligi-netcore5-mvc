@@ -1,0 +1,14 @@
+@model AlertMessage
+<div class="row">@*  *@
+    <div class="col-md-12">
+        <div class="alert alert-@Model.AlertType">
+            <h4 class="alert-title" style="display: inline;">@Model.Title</h4>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <p>
+                @Model.Message
+            </p>
+        </div>
+    </div>
+@*</div>*@

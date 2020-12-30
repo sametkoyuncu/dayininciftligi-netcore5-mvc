@@ -1,0 +1,84 @@
+/* created by sk. 13.06.2019 */
+
+h1 {
+    color: #051f2d;
+}
+
+/* header css*/
+
+.navbar-toggler span {
+    background: #94fc13 !important;
+}
+
+.button-for-scroll{
+    background-color: transparent;
+    border: 0;
+}
+.button-for-scroll:hover{
+    background-color: transparent;
+    border: 0;
+}
+
+.navbar-galeri {
+    position: fixed;
+    width: 100%;
+    top: 0 !important;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8) !important;
+    transform: none !important;
+    transition:none !important;
+    -webkit-transition: none !important;
+}
+
+/* galeri */
+.galeri {
+    
+}
+
+.galeri-baglanti {
+    font-size: 18px;
+    color: #051f2d !important;
+    cursor: pointer !important;
+}
+.galeri-baglanti:hover {
+    color: #94fc13 !important;
+}
+/* contact css*/
+
+.button-contactForm {
+    background: #94fc13 !important;
+    border: 1px;
+    border-color: #94fc13 !important;
+}
+
+.button-contactForm:hover {
+    color: #94fc13 !important;
+    background: #fefffe !important;
+    border: 1px;
+    border-color: #94fc13 !important;
+}
+
+.contact-info .media-body h3 a:hover {
+    color: #94fc13 !important;
+}
+
+.iletisim-ikon {
+    color: #94fc13 !important;
+}
+
+.footer-area .footer-bottom p a {
+    color: #94fc13  !important;
+}
+
+.footer-area .single-footer-widget .click-btn {
+    background: #94fc13  !important;
+}
+
+.footer-area .footer-bottom .footer-social a {
+    color: #94fc13 !important;
+}
+
+.footer-area .footer-bottom .footer-social a:hover {
+    color: #fefffe !important;
+}

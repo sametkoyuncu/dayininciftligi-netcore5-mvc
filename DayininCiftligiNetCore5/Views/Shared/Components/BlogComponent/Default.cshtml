@@ -1,0 +1,40 @@
+﻿@model BlogSectionModel
+@*@{
+    var sectionData = ViewData["BlogComponent"] as SectionModel;
+}*@
+<!--================ Start Blog Area =================-->
+<section class="latest-blog-area area-padding-top" id="blog">
+    <div class="container">
+        <h1 class="text-center">@Model.Name</h1>
+        <p class="page-description text-center">@Model.Description</p>
+        <div class="row" style="padding-top: 40px;">
+            @foreach (var blog in Model.HomeBlogModels)
+            {
+                <div class="col-md-4 ">
+                    <div class="single-blog">
+                        <div class="thumb">
+                            <img class="img-fluid w-100" src="~/img/@blog.SmallImageUrl" alt="">
+                        </div>
+                        <div class="single-blog-content">
+                            <p class="tag">Haberler, Etkinlikler</p>
+                            <p class="date">24 Haziran 2019</p>
+                            <h4>
+                                <a href="@blog.Url">@blog.Header</a>
+                            </h4>
+                            <div class="meta-bottom d-flex">
+                                <p class="likes"><i class="ti-comments"></i> 0 Yorum</p>
+                                <p><i class="ti-heart"></i> 0 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div> <!-- row end-->
+        <div class="row">
+            <div class="mx-auto">
+                <a class="galeri-baglanti" href="@Model.ButtonUrl">@Model.ButtonText</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================ End Blog Area =================-->

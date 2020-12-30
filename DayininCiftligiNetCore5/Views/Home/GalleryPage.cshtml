@@ -1,0 +1,51 @@
+﻿@model List<GalleryImage>
+@{
+    var bannerData = ViewBag.GalleryPageBannerData as PageBannerModel;
+}
+@section Navbar
+{
+    @await Component.InvokeAsync("NavbarComponentOtherPages")
+}
+<!--================Hero Banner Area Start =================-->
+<section class="hero-banner d-flex align-items-center">
+    <div class="container text-center">
+        <h2>@bannerData.Header</h2>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@bannerData.MasterPageUrl">@bannerData.MasterPage</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@bannerData.ThisPage</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<!--================Hero Banner Area End =================-->
+<!--================ Galeri Area ====================-->
+
+<section class="service-area area-padding-bottom" style="padding-top: 40px;" id="galeri">
+    <div class="container">
+        <!--
+           <h1 class="text-center">Galeri</h1>
+           <p class="page-description text-center">Dayının Çiftliğinden Görseller</p>
+        -->
+        <h3 class="page-description text-center">Dayının Çiftliğinden Görseller</h3>
+
+        <div class="tz-gallery">
+
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="@item.ImageUrl">
+                            <img src="@item.ImageUrl" alt="@item.ImageAltText">
+                        </a>
+                    </div>
+                }
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--================Galeri Area End==================-->

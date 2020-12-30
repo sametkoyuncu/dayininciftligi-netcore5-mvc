@@ -1,0 +1,67 @@
+﻿<!doctype html>
+<html lang="tr">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    @await Component.InvokeAsync("MetaComponent")
+
+    <!-- meta tags -->
+    <!--<meta name="title" content="Dayının Çiftliği" />
+    <meta name="description" content="Dayının Çiftliği İstanbul Şile'de kurbanlık, adaklık ve süt üretimi yapan bir aile işletmesidir.">
+    <meta name="keywords" content="kurbanlık, adaklık, süt, yumurta" />-->
+    <!--<meta name="author" content="SİTE YÖNETİCİSİ VE YAZARI" />-->
+    <!--<meta name="owner" content="SİTE SAHİBİ" />-->
+    <!--<meta name="copyright" content="(c) 2018" />-->
+    <!-- Favicon -->
+    <!--<link rel="shortcut icon" type="image/x-icon" href="~/img/theme/favicon.png">
+    <link rel="apple-touch-icon" href="~/img/theme/favicon.png">
+    <title>Dayının Çiftliği | Kurbanlık - Adaklık - Günlük Süt</title>-->
+
+    <!-- galeri css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+    <link href="~/css/theme/gallery-grid.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/theme/themify-icons.css" rel="stylesheet" />
+    <link href="~/css/theme/fontawesome/all.min.css" rel="stylesheet" />
+    <link href="~/css/theme/owlcarousel/owl.carousel.min.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="vendors/animate-css/animate.css"> -->
+    <!-- main css -->
+    <link href="~/css/theme/style.css" rel="stylesheet" />
+    <link href="~/css/theme/responsive.css" rel="stylesheet" />
+    <link href="~/css/theme/mystyle.css" rel="stylesheet" />
+</head>
+<body>
+
+    @await RenderSectionAsync("Navbar")
+
+    @RenderBody()
+
+    @await Component.InvokeAsync("FooterComponent")
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/theme/popper.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/theme/owl.carousel.min.js"></script>
+    <!-- <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>-->
+    <script src="~/js/theme/theme.js"></script>
+    <!-- Kaydırma -->
+    <script src="~/js/theme/scroll.js"></script>
+
+    <!--Galeri js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.tz-gallery');
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
