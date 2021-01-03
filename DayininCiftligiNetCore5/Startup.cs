@@ -1,4 +1,5 @@
 using DayininCiftligiNetCore5.Data;
+using DayininCiftligiNetCore5.EmailServices;
 using DayininCiftligiNetCore5.Identity;
 using DayininCiftligiNetCore5.Interfaces;
 using DayininCiftligiNetCore5.Repositories;
@@ -20,6 +21,7 @@ namespace DayininCiftligiNetCore5
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -53,7 +55,7 @@ namespace DayininCiftligiNetCore5
                 //user
                 //options.User.AllowedUserNameCharacters = "";
                 options.User.RequireUniqueEmail = true;
-                options.SignIn.RequireConfirmedEmail = false;
+                options.SignIn.RequireConfirmedEmail = true;
                 options.SignIn.RequireConfirmedPhoneNumber = false;
             });
 
@@ -67,7 +69,8 @@ namespace DayininCiftligiNetCore5
                 options.Cookie = new CookieBuilder
                 {
                     HttpOnly = true,
-                    Name = ".DayininCiftligi.Security.Cookie"
+                    Name = ".DayininCiftligi.Security.Cookie",
+                    SameSite = SameSiteMode.Strict
                 };
             });
 
@@ -85,6 +88,16 @@ namespace DayininCiftligiNetCore5
             services.AddScoped<IFooterWidgetRepository, FooterWidgetRepository>();
             services.AddScoped<ISubscriberRepository, SubscriberRepository>();
             services.AddScoped<IWebsiteDataRepository, WebsiteDataRepository>();
+
+            services.AddScoped<IEmailSender, SmtpEmailSender>(i =>
+                new SmtpEmailSender(
+                        Configuration["EmailSender:Host"],
+                        Configuration.GetValue<int>("EmailSender:Port"),
+                        Configuration.GetValue<bool>("EmailSender:EnableSSL"),
+                        Configuration["EmailSender:UserName"],
+                        Configuration["EmailSender:Password"]
+                    )
+            ); 
 
             services.AddControllersWithViews();
         }
@@ -133,6 +146,25 @@ namespace DayininCiftligiNetCore5
                 //    pattern: "{url}",
                 //    defaults: new { controller = "Blog", action = "Details" }
                 //);
+
+                //confirmemail
+                endpoints.MapControllerRoute(
+                    name: "Admin/ConfirmEmail",
+                    pattern: "Account/ConfirmEmail",
+                    defaults: new { area = "Admin", controller = "Account", action = "ConfirmEmail" }
+                );
+                //resetpassword
+                endpoints.MapControllerRoute(
+                    name: "Admin/ResetPassword",
+                    pattern: "Account/ResetPassword",
+                    defaults: new { area = "Admin", controller = "Account", action = "ResetPassword" }
+                );
+                //forgotpassword
+                endpoints.MapControllerRoute(
+                    name: "Admin/ForgotPassword",
+                    pattern: "ForgotPassword",
+                    defaults: new { area = "Admin", controller = "Account", action = "ForgotPassword" }
+                );
                 //Admin Routes
                 endpoints.MapControllerRoute(
                    name: "Admin/Login",
@@ -153,6 +185,10 @@ namespace DayininCiftligiNetCore5
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "admin/default",
+                    pattern: "{area=Admin}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace DayininCiftligiNetCore5.Areas.Admin.Models
 {
-    public class LoginModel
+    public class ResetPasswordModel
     {
+        [Required]
+        public string Token { get; set; }
+
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
@@ -15,6 +18,10 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Models
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public string ReturnUrl { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Compare("Password")]
+        public string RePassword { get; set; }
     }
 }

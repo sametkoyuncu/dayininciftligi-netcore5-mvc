@@ -1854,6 +1854,10 @@ p.card-text {
     font-size: 14px;
 }
 
+.dropdown-item-dark:hover {
+    background-color: #565656 !important;
+}
+
 /*-------------------- END Dropdown Button ------------------- */
 
 
