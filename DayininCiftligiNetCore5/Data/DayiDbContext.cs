@@ -269,6 +269,27 @@ namespace DayininCiftligiNetCore5.Data
             modelBuilder.Entity<WebsiteData>()
                .Property(s => s.IsVisible)
                .HasDefaultValue(false);
+            //SocialMedias Table
+            modelBuilder.Entity<SocialMedia>()
+                .Property(sm => sm.Name)
+                .IsRequired()
+                .HasMaxLength(25);
+            modelBuilder.Entity<SocialMedia>()
+                .Property(sm => sm.Url)
+                .IsRequired()
+                .HasMaxLength(255);
+            modelBuilder.Entity<SocialMedia>()
+                .Property(sm => sm.Icon)
+                .IsRequired()
+                .HasMaxLength(50);
+            modelBuilder.Entity<SocialMedia>()
+                .Property(sm => sm.DisplayOrder)
+                .HasMaxLength(2)
+                .HasDefaultValue(0);
+            modelBuilder.Entity<SocialMedia>()
+               .Property(s => s.IsVisible)
+               .HasDefaultValue(true);
+
         }
 
         public DbSet<NavItem> NavItems { get; set; }
@@ -282,5 +303,6 @@ namespace DayininCiftligiNetCore5.Data
         public DbSet<FooterWidget> FooterWidgets { get; set; }
         public DbSet<Subscriber> Subscribers { get; set; }
         public DbSet<WebsiteData> WebsiteDatas { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using DayininCiftligiNetCore5.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DayininCiftligiNetCore5.Migrations
 {
     [DbContext(typeof(DayiDbContext))]
-    partial class DayiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210104184453_AddSocialMediaEntity")]
+    partial class AddSocialMediaEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +36,7 @@ namespace DayininCiftligiNetCore5.Migrations
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 1, 4, 21, 50, 18, 449, DateTimeKind.Local).AddTicks(97));
+                        .HasDefaultValue(new DateTime(2021, 1, 4, 21, 44, 52, 295, DateTimeKind.Local).AddTicks(4276));
 
                     b.Property<string>("Header")
                         .IsRequired()
@@ -394,12 +396,6 @@ namespace DayininCiftligiNetCore5.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<int>("DisplayOrder")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(2)
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
 
                     b.Property<string>("Icon")
                         .IsRequired()

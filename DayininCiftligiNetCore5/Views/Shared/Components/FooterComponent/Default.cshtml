@@ -63,9 +63,10 @@
                 @ViewBag.CopyrightForFooter
             </p>
             <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
-                <a href="https://www.facebook.com/dayininciftligi/" target="_blank"><i class="ti-facebook"></i></a>
-                <a href="https://www.instagram.com/dayininciftligi/" target="_blank"><i class="ti-instagram"></i></a>
-                <a href="https://www.youtube.com/channel/UCzXD8w7Amtq1-HL_jwmXVgw/featured?view_as=subscriber" target="_blank"><i class="ti-youtube"></i></a>
+                @foreach (var socialMedia in Model.SocialMedias)
+                {
+                    <a href="@socialMedia.Url" target="_blank"><i class="@socialMedia.Icon"></i></a>
+                }
             </div>
         </div>
     </div>

@@ -4,14 +4,16 @@ using DayininCiftligiNetCore5.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DayininCiftligiNetCore5.Migrations
 {
     [DbContext(typeof(DayiDbContext))]
-    partial class DayiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210104185019_AddSocialMediaEntityDisplayOrderProp")]
+    partial class AddSocialMediaEntityDisplayOrderProp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

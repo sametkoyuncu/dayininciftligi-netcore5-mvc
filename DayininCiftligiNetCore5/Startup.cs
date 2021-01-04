@@ -88,6 +88,7 @@ namespace DayininCiftligiNetCore5
             services.AddScoped<IFooterWidgetRepository, FooterWidgetRepository>();
             services.AddScoped<ISubscriberRepository, SubscriberRepository>();
             services.AddScoped<IWebsiteDataRepository, WebsiteDataRepository>();
+            services.AddScoped<ISocialMediaRepository, SocialMediaRepository>();
 
             services.AddScoped<IEmailSender, SmtpEmailSender>(i =>
                 new SmtpEmailSender(

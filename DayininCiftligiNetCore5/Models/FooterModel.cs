@@ -14,6 +14,7 @@ namespace DayininCiftligiNetCore5.Models
         public string Email { get; set; }
         public List<NavItem> NavItems { get; set; }
         public List<FooterWidget> FooterWidgets { get; set; }
+        public List<SocialMedia> SocialMedias { get; set; }
 
     }
 }

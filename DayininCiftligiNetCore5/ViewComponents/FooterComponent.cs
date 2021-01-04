@@ -14,16 +14,19 @@ namespace DayininCiftligiNetCore5.ViewComponents
         private readonly IContactRepository _contactRepository;
         private readonly IFooterWidgetRepository _footerWidgetRepository;
         private readonly IWebsiteDataRepository _websiteDataRepository;
+        private readonly ISocialMediaRepository _socialMediaRepository;
         public FooterComponent(
             INavItemRepository navItemRepository, 
             IContactRepository contactRepository, 
             IFooterWidgetRepository footerWidgetRepository,
-            IWebsiteDataRepository websiteDataRepository)
+            IWebsiteDataRepository websiteDataRepository,
+            ISocialMediaRepository socialMediaRepository)
         {
             _navItemRepository = navItemRepository;
             _contactRepository = contactRepository;
             _footerWidgetRepository = footerWidgetRepository;
             _websiteDataRepository = websiteDataRepository;
+            _socialMediaRepository = socialMediaRepository;
         }
         
         public IViewComponentResult Invoke()
@@ -31,13 +34,15 @@ namespace DayininCiftligiNetCore5.ViewComponents
             var navItems = _navItemRepository.GetByDisplayOrder();
             var contact = _contactRepository.GetFooterContactInfos();
             var footerWidgets = _footerWidgetRepository.GetFirstTwoWidgets();
+            var socialMedias = _socialMediaRepository.GetByDisplayOrder();
             var model = new FooterModel() {
                 Address = contact.Address,
                 City = contact.City,
                 Phone = contact.Phone,
                 Email = contact.Email,
                 NavItems = navItems,
-                FooterWidgets = footerWidgets
+                FooterWidgets = footerWidgets,
+                SocialMedias = socialMedias
             };
             ViewBag.CopyrightForFooter = _websiteDataRepository.GetCopyrightForFooter();
             return View(model);
