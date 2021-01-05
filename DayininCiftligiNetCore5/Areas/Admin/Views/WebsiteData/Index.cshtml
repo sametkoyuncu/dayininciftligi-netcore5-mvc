@@ -13,13 +13,11 @@
             <h4 class="header-title">Logolar</h4>
             <p class="text-muted font-14 mb-4">Bu kısımda sitenin logo ve favikonunu değiştirebilirsiniz.</p>
             <hr>
-            <form action="islem.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="site_favicon_eski" value="@Model.Favicon">
-                <input type="hidden" name="site_favicon_eski" value="@Model.Logo">
-                <input type="hidden" name="ayar_id" value="@Model.Id">
+            <form asp-area="Admin" asp-controller="WebsiteData" asp-action="LogosEdit" method="POST" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id">
                 <div class="form-row">
                     <div class="col-md-3 mb-3 text-center">
-                        <img class="rounded-circle" src="~/img/@Model.Favicon" alt="" width="75px" style="background-color:darkslateblue; padding: 7px;">
+                        <img class="rounded-circle" src="~/img/logos/@Model.Favicon" alt="" width="75px" style="background-color:darkslateblue; padding: 7px;">
                     </div>
                     <div class="col-md-9 mb-3">
                         <label for="validationCustom01">Favicon</label>
@@ -28,7 +26,8 @@
                                 <span class="input-group-text bg-mor">Yeni Yükle</span>
                             </div>
                             <div class="custom-file">
-                                <input type="file" name="site_favicon" class="custom-file-input" id="inputGroupFile01">
+                                <input type="hidden" asp-for="Favicon">
+                                <input type="file" name="fileFavicon" class="custom-file-input" id="inputGroupFile01">
                                 <label class="custom-file-label" for="inputGroupFile01">Faviconu değişirmek için bir görsel seçiniz..</label>
                             </div>
                         </div>
@@ -36,7 +35,7 @@
                 </div>
                 <div class="form-row">
                     <div class="col-md-3 mb-3 text-center">
-                        <img class="rounded" src="~/img/@Model.Logo" alt="" width="200px" height="auto" style="background-color:darkslateblue; padding: 10px;">
+                        <img class="rounded" src="~/img/logos/@Model.Logo" alt="" width="200px" height="auto" style="background-color:darkslateblue; padding: 10px;">
                     </div>
                     <div class="col-md-9 mb-3">
                         <label for="validationCustom01">Logo</label>
@@ -45,7 +44,8 @@
                                 <span class="input-group-text bg-mor">Yeni Yükle</span>
                             </div>
                             <div class="custom-file">
-                                <input type="file" name="site_logo" class="custom-file-input" id="inputGroupFile01">
+                                <input type="hidden" asp-for="Logo">
+                                <input type="file" name="fileLogo" class="custom-file-input" id="inputGroupFile01">
                                 <label class="custom-file-label" for="inputGroupFile01">Logoyu değiştirmek için bir görsel seçiniz..</label>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                 </div>
                 <hr>
                 <div class="col-auto text-right">
-                    <button type="submit" name="genelayarguncelle" class="btn btn-rounded btn-kaydet">Kaydet</button>
+                    <button type="submit" class="btn btn-rounded btn-kaydet">Kaydet</button>
                 </div>
             </form>
         </div>
@@ -67,8 +67,7 @@
             <h4 class="header-title">Meta Etiketleri</h4>
             <p class="text-muted font-14 mb-4">Bu kısımda meta etiketlerinizi düzenleyebilirsiniz.</p>
             <hr>
-            <form  asp-area="Admin" asp-controller="WebsiteData" asp-action="MetaDataEdit" method="POST">
-            @*<form action="/admin/websitedata/metadataedit" method="POST">*@
+            <form asp-area="Admin" asp-controller="WebsiteData" asp-action="MetaDataEdit" method="POST">
                 <input type="hidden" asp-for="Id">
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
