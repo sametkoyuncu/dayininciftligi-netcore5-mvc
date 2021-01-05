@@ -54,21 +54,22 @@ namespace DayininCiftligiNetCore5.Controllers
         [HttpPost]
         public IActionResult SendMessage(MessageModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var message = new Message()
-                {
-                    Name = model.Name,
-                    Email = model.Email,
-                    Subject = model.Subject,
-                    Text = model.Text
-                };
-
-                _messageRepository.Create(message);
-                CreateMessage("Mesajını aldık, en kısa sürede geri dönüş yapacağız.", "success");
+                CreateMessage("Mesaj gönderirken bir hata oluştu. Lütfen tekrar deneyiniz. Hata devam ederse <a href='mailto: @Model.Email'>@Model.EmailForContact</a> adresine eposta gönderebilirsiniz.", "danger");
                 return Redirect("/Index#mesajgonder");
             }
-            CreateMessage("Mesaj gönderirken bir hata oluştu. Lütfen tekrar deneyiniz. Hata devam ederse <a href='mailto: @Model.Email'>@Model.EmailForContact</a> adresine eposta gönderebilirsiniz.", "danger");
+            
+            var message = new Message()
+            {
+                Name = model.Name,
+                Email = model.Email,
+                Subject = model.Subject,
+                Text = model.Text
+            };
+
+            _messageRepository.Create(message);
+            CreateMessage("Mesajını aldık, en kısa sürede geri dönüş yapacağız.", "success");
             return Redirect("/Index#mesajgonder");
         }
 
