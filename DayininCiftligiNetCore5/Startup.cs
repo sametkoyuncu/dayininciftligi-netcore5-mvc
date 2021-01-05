@@ -148,6 +148,13 @@ namespace DayininCiftligiNetCore5
                 //    defaults: new { controller = "Blog", action = "Details" }
                 //);
 
+                //social media create
+                endpoints.MapControllerRoute(
+                    name: "SocialMedia/Create",
+                    pattern: "SocialMedia/Create",
+                    defaults: new { area = "Admin", controller = "SocialMedia", action = "Create" }
+                );
+
                 //logosedit
                 endpoints.MapControllerRoute(
                     name: "Admin/LogosEdit",

@@ -17,6 +17,10 @@
     color:beige;
 }
 
+    .btn-geri:hover {
+        color: beige;
+    }
+
 .btn-golge {
     -webkit-box-shadow: 0 0 3px 2px #858f91;
 	-moz-box-shadow: 0 0 3px 2px #858f91;

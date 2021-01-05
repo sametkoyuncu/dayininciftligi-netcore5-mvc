@@ -3,7 +3,6 @@
 }
 @if (TempData["message"] != null)
 {
-    @* var message = JsonConvert.DeserializeObject<AlertMessage>(@TempData["message"] as String); *@
     <partial name="_ResultMessage" model="@(TempData.Get<AlertMessage>("message"))" />
 }
 <!-- genel ayarlar start -->

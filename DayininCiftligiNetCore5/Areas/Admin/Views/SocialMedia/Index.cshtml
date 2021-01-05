@@ -1,0 +1,74 @@
+﻿@model List<SocialMedia>
+
+@if (TempData["message"] != null)
+{
+    <partial name="_ResultMessage" model="@(TempData.Get<AlertMessage>("message"))" />
+}
+
+<!-- sosyal medya start -->
+<div class="col-12 mt-3 mb-5">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <h4 class="header-title">Sosyal Medya Hesaplarınız&nbsp;&nbsp;</h4>
+                </div>
+                <div class="col text-right">
+                    <button type="button" class="btn btn-rounded btn-yeniekle btn-xs" data-toggle="modal" data-target="#yenismekle"><i class="ti-plus"></i> &nbsp;Yeni Ekle</button>
+                </div>
+            </div>
+            <p class="text-muted font-14 mb-4">Bu kısımda, sosyal medya hesaplarınızı siteye ekleyebilir, veya varolan hesaplarınızı düzenleyebilirsiniz.</p>
+            <div class="single-table">
+                <div class="table-responsive">
+                    <table class="table table-hover progress-table text-left">
+                        <thead class="text-uppercase bg-mor">
+                            <tr>
+                                <th scope="col">Sıra</th>
+                                <th scope="col">İkon</th>
+                                <th scope="col">Adı</th>
+                                <th scope="col">Bağlantı Adresi</th>
+                                <th scope="col">Görünürlük</th>
+                                <th scope="col">Ayarlar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var socialMedia in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@socialMedia.DisplayOrder</th>
+                                    <td><i class="@socialMedia.Icon"></i></td>
+                                    <td>@socialMedia.Name</td>
+                                    <td><a href="@socialMedia.Url" target="_blank">@socialMedia.Url</a></td>
+                                    <td>
+                                        @if (socialMedia.IsVisible)
+                                        {
+                                            <span class="status-p bg-yesil">Görünür</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="status-p bg-kirmizi">Gizli</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <ul class="d-flex justify-content-center">
+                                            <li class="mr-3"><a href="/Admin/SocialMedia/Edit/@socialMedia.Id" class="text-secondary" title="Düzenle"><i class="ti-pencil"></i></a></li>
+                                            <li>
+                                                <form action="/Admin/SocialMedia/Delete" method="POST" style="display: inline;">
+                                                    <input type="hidden" name="Id" value="@socialMedia.Id">
+                                                    <button type="submit" class="text-danger" style="border: none; background-color: transparent;" title="Sil"><i class="ti-trash"></i></button>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- sosyal medya end -->
+<!-- yeni sosyal medya hesabı ekleyin -->
+@await Component.InvokeAsync("SocialMediaCreateComponent")
