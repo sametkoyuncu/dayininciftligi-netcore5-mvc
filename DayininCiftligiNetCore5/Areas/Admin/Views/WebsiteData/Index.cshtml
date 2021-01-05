@@ -1,0 +1,119 @@
+﻿@model WebsitedataModel
+@{
+}
+@if (TempData["message"] != null)
+{
+    @* var message = JsonConvert.DeserializeObject<AlertMessage>(@TempData["message"] as String); *@
+    <partial name="_ResultMessage" model="@(TempData.Get<AlertMessage>("message"))" />
+}
+<!-- genel ayarlar start -->
+<div class="col-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Logolar</h4>
+            <p class="text-muted font-14 mb-4">Bu kısımda sitenin logo ve favikonunu değiştirebilirsiniz.</p>
+            <hr>
+            <form action="islem.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="site_favicon_eski" value="@Model.Favicon">
+                <input type="hidden" name="site_favicon_eski" value="@Model.Logo">
+                <input type="hidden" name="ayar_id" value="@Model.Id">
+                <div class="form-row">
+                    <div class="col-md-3 mb-3 text-center">
+                        <img class="rounded-circle" src="~/img/@Model.Favicon" alt="" width="75px" style="background-color:darkslateblue; padding: 7px;">
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <label for="validationCustom01">Favicon</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-mor">Yeni Yükle</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" name="site_favicon" class="custom-file-input" id="inputGroupFile01">
+                                <label class="custom-file-label" for="inputGroupFile01">Faviconu değişirmek için bir görsel seçiniz..</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-3 mb-3 text-center">
+                        <img class="rounded" src="~/img/@Model.Logo" alt="" width="200px" height="auto" style="background-color:darkslateblue; padding: 10px;">
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <label for="validationCustom01">Logo</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-mor">Yeni Yükle</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" name="site_logo" class="custom-file-input" id="inputGroupFile01">
+                                <label class="custom-file-label" for="inputGroupFile01">Logoyu değiştirmek için bir görsel seçiniz..</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-auto text-right">
+                    <button type="submit" name="genelayarguncelle" class="btn btn-rounded btn-kaydet">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- genel ayarlar end -->
+<!-- meta etiketleri start -->
+<div class="col-12 mt-5 mb-5" id="metaetiketleri">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Meta Etiketleri</h4>
+            <p class="text-muted font-14 mb-4">Bu kısımda meta etiketlerinizi düzenleyebilirsiniz.</p>
+            <hr>
+            <form  asp-area="Admin" asp-controller="WebsiteData" asp-action="MetaDataEdit" method="POST">
+            @*<form action="/admin/websitedata/metadataedit" method="POST">*@
+                <input type="hidden" asp-for="Id">
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Title">Meta Title</label>
+                        <input class="form-control" asp-for="Title" id="example-text-input">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="CopyrightForMeta">Meta Copyright</label>
+                        <input class="form-control" asp-for="CopyrightForMeta" id="example-text-input">
+                        <span asp-validation-for="CopyrightForMeta" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Author">Meta Author</label>
+                        <input class="form-control" asp-for="Author" id="example-text-input">
+                        <span asp-validation-for="Author" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Owner">Meta Owner</label>
+                        <input class="form-control" asp-for="Owner" id="example-text-input">
+                        <span asp-validation-for="Owner" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                        <label asp-for="Keywords">Meta Keywords</label>
+                        <input class="form-control" asp-for="Keywords" id="example-text-input">
+                        <span asp-validation-for="Keywords" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                        <label asp-for="Description">Meta Description</label>
+                        <input class="form-control" asp-for="Description" id="example-text-input">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-auto text-right">
+                    <button type="submit" class="btn btn-rounded btn-kaydet">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- meta etiketleri end -->         

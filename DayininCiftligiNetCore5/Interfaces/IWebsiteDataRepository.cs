@@ -1,4 +1,5 @@
-﻿using DayininCiftligiNetCore5.Entities;
+﻿using DayininCiftligiNetCore5.Areas.Admin.Models;
+using DayininCiftligiNetCore5.Entities;
 using DayininCiftligiNetCore5.Models;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace DayininCiftligiNetCore5.Interfaces
         MetaModel GetMetaData();
         String GetLogo();
         String GetCopyrightForFooter();
+        WebsitedataModel GetWebsiteData();
     }
 }

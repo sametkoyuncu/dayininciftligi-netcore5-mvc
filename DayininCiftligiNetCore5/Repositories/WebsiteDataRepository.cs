@@ -1,4 +1,5 @@
-﻿using DayininCiftligiNetCore5.Data;
+﻿using DayininCiftligiNetCore5.Areas.Admin.Models;
+using DayininCiftligiNetCore5.Data;
 using DayininCiftligiNetCore5.Entities;
 using DayininCiftligiNetCore5.Interfaces;
 using DayininCiftligiNetCore5.Models;
@@ -43,6 +44,27 @@ namespace DayininCiftligiNetCore5.Repositories
                                 Owner = wd.Owner,
                                 Favicon = wd.Favicon,
                                 CopyrightForMeta = wd.CopyrightForMeta
+                            })
+                            .FirstOrDefault();
+        }
+
+        public WebsitedataModel GetWebsiteData()
+        {
+            var context = new DayiDbContext();
+            return context.WebsiteDatas
+                            .Where(wd => wd.IsVisible == true)
+                            .Select(wd => new WebsitedataModel()
+                            {
+                                Id = wd.Id,
+                                Title = wd.Title,
+                                Description = wd.Description,
+                                Keywords = wd.Keywords,
+                                Author = wd.Author,
+                                Owner = wd.Owner,
+                                Favicon = wd.Favicon,
+                                CopyrightForMeta = wd.CopyrightForMeta,
+                                Logo = wd.Logo,
+                                CopyrightForFooter = wd.CopyrightForFooter
                             })
                             .FirstOrDefault();
         }

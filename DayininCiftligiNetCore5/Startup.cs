@@ -148,6 +148,12 @@ namespace DayininCiftligiNetCore5
                 //    defaults: new { controller = "Blog", action = "Details" }
                 //);
 
+                //metadataedit
+                endpoints.MapControllerRoute(
+                    name: "Admin/MetaDataEdit",
+                    pattern: "Admin/MetaDataEdit",
+                    defaults: new { area = "Admin", controller = "WebsiteData", action = "MetaDataEdit" }
+                );
                 //confirmemail
                 endpoints.MapControllerRoute(
                     name: "Admin/ConfirmEmail",
