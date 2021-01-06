@@ -1,0 +1,42 @@
+﻿@model NavItemModel
+    <!-- basic modal start -->
+<!-- yeni sosyal medya hesabı ekleyin -->
+<div class="modal fade" id="yeniustmenuekle">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-mor">
+                <h5 class="modal-title">Yeni Üst Menü Ekleyin</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            @*<form asp-area="Admin" asp-controller="Navigation" asp-action="Create" method="POST">*@
+            <form action="/Admin/Navigation/Create" method="POST">
+                <div class="modal-body">
+                    <div class="form-row mb-3 mx-2">
+                        <label asp-for="Name" class="col-form-label">Menü Adı</label>
+                        <input class="form-control" asp-for="Name" placeholder="Hakkımızda, Referanslar..">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-row mb-3 mx-2">
+                        <label asp-for="Url" class="col-form-label">Menü Bağlantısı</label>
+                        <input class="form-control" asp-for="Url" placeholder="http://siteadi.com/baglanti">
+                        <span asp-validation-for="Url" class="text-danger"></span>
+                    </div>
+                    <div class="form-row mb-3 mx-2">
+                        <label asp-for="DisplayOrder" class="col-form-label">Menü Sırası (Boş bırakabilirsiniz)</label>
+                        <input class="form-control" asp-for="DisplayOrder" min="0" max="99" step="1" placeholder="1, 2, 3, vb. rakam giriniz veya boş bırakınız">
+                        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer bg-acik-gri">
+                    <button type="button" class="btn btn-geri btn-rounded" data-dismiss="modal"><i class="ti-arrow-left"></i>&nbsp; Geri Dön</button>
+                    <button type="submit" class="btn btn-kaydet btn-rounded"><i class="ti-check"></i>&nbsp; Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- basic modal end -->
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
