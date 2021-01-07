@@ -1,8 +1,13 @@
 ﻿<div class="main-menu">
     <div class="menu-inner">
         <nav>
+            <!--
+                page_id <li> ler sırası ile 1, 2, 3 şeklinde
+                collapse <li> ler de 1.1 1.2 1.3 gibi gibi 
+                yani 1. li bir collapse ve altında 3 li var
+            -->
             <ul class="metismenu" id="menu">
-                <li class="active">
+                <li class="@(ViewBag.PageId==0?"active":"")">
                     <a href="javascript:void(0)" aria-expanded="true">
                         <i class="ti-dashboard"></i><span>Kontrol Paneli</span>
                     </a>
@@ -11,13 +16,13 @@
                         <li><a href="raporlar.php?pg=2">Raporlar</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="/admin/websitedata/index">
-                        <i class="ti-settings"></i>
+                <li class="@(ViewBag.PageId==1?"active":"")">
+                   <a href="/admin/websitedata/index">
+                       <i class="ti-settings"></i>
                         <span>Genel Ayarlar</span>
                     </a>
                 </li>
-                <li>
+                <li class="@(ViewBag.PageId==2?"active":"")">
                     <a href="/admin/socialmedia/index">
                         <i class="ti-instagram "></i>
                         <span>Sosyal Ağlar</span>
@@ -28,8 +33,8 @@
                         <i class="ti-layout-grid2"></i>
                         <span>Anasayfa Bölümleri</span>
                     </a>
-                    <ul class="collapse">
-                        <li><a href="/Admin/Navigation/Index">Üst Kısım</a></li>
+                    <ul class="collapse @((int)ViewBag.PageId==3?"in":"")"">
+                        <li class="@(ViewBag.PageId==3.1?"active":"")"><a href="/Admin/Navigation/Index">Üst Kısım</a></li>
                         <li><a href="">Giriş</a></li>
                         <li><a href="">Ürünler</a></li>
                         <li><a href="">Galeri</a></li>

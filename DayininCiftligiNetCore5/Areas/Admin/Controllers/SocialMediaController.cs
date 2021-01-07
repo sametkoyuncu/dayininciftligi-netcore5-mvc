@@ -21,6 +21,7 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var model = _socialMediaRepository.GetAll();
+            ViewBag.PageId = 2;
             return View(model);
         }
 

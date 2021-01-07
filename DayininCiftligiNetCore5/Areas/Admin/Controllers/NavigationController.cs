@@ -21,6 +21,7 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var model = _navItemRepository.GetAll();
+            ViewBag.PageId = 3.1;
             return View(model);
         }
 

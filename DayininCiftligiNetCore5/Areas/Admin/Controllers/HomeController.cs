@@ -13,6 +13,7 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.PageId = 0;
             return View();
         }
     }

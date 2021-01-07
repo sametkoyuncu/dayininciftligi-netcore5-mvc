@@ -24,6 +24,7 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var model = _websiteDataRepository.GetWebsiteData();
+            ViewBag.PageId = 1;
             return View(model);
         }
 
