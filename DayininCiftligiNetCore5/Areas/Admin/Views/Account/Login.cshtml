@@ -8,7 +8,7 @@
         @if (TempData["message"] != null)
         {
             @* var message = JsonConvert.DeserializeObject<AlertMessage>(@TempData["message"] as String); *@
-            <partial name="_ResultMessage" model="@(TempData.Get<AlertMessage>("message"))" />
+            <partial name="_ResultMessage" model="@(TempData.Get<AlertMessageAdmin>("message"))" />
         }
         <div class="login-box ptb--30">
             <form asp-area="Admin" asp-controller="Account" asp-action="Login" method="post">

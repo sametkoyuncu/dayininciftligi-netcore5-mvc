@@ -111,7 +111,7 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
 
         private void CreateMessage(string message, string alerttype)
         {
-            var msg = new AlertMessage()
+            var msg = new AlertMessageAdmin()
             {
                 Message = message,
                 AlertType = alerttype
