@@ -1,0 +1,75 @@
+﻿@model HomeBannerModel
+@if (TempData["message"] != null)
+{
+    <partial name="_ResultMessage" model="@(TempData.Get<AlertMessageAdmin>("message"))" />
+}
+<div class="main-content-inner">
+    <!-- Textual inputs start -->
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Giriş Bölümü Ayarları</h4>
+                <p class="text-muted font-14 mb-4">Bu alanda giriş bölümünü içeriklerini düzenleyebilirsiniz.</p>
+                <hr>
+                <form action="/Admin/HomeBanner/Edit" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="Id">
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label asp-for="Header">Başlık</label>
+                            <input class="form-control" asp-for="Header">
+                            <span asp-validation-for="Header" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label asp-for="ButtonText">Buton Yazısı</label>
+                            <input class="form-control" asp-for="ButtonText">
+                            <span asp-validation-for="ButtonText" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label asp-for="ButtonUrl">Buton Bağlantısı</label>
+                            <input class="form-control" asp-for="ButtonUrl">
+                            <span asp-validation-for="ButtonUrl" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <label asp-for="Text" class="col-form-label">Metin</label>
+                        <textarea class="form-control" aria-label="With textarea" name="Text">@Model.Text</textarea>
+                        <span asp-validation-for="Text" class="text-danger"></span>
+                    </div>
+                    <div class="form-row">
+                        <label class="col-12" asp-for="BgImageUrl" class="col-form-label">Arkaplan Görseli</label>
+                        <div class="input-group mb-1">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-mor">Yeni Yükle</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="hidden" asp-for="BgImageUrl">
+                                <input type="file" name="fileBgImage" class="custom-file-input" id="inputGroupFile01">
+                                <label class="custom-file-label" for="inputGroupFile01">Arkaplanı değişirmek için bir görsel seçiniz..</label>
+                            </div>
+                        </div>
+                        <!-- accordion style 4 start -->
+                        <div class="col-12">
+                            <div id="accordion4" class="according accordion-s3">
+                                <div class="card-header">
+                                    <a class="card-link" data-toggle="collapse" href="#accordion41">Mevcut Arkaplanı Görmek İçin Tıklayınız</a>
+                                </div>
+                                <div id="accordion41" class="collapse" data-parent="#accordion4">
+                                    <div class="card-body">
+                                        <img src="~/img/bg/@Model.BgImageUrl" class="text-center" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- accordion style 4 end -->
+                    </div>
+                    <hr>
+                    <div class="col-auto text-right">
+                        <button type="submit" class="btn btn-rounded btn-kaydet">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Textual inputs end -->
+</div>
+<!-- main content area end -->
