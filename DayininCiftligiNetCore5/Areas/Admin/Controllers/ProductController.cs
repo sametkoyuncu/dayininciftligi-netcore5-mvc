@@ -17,14 +17,29 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
     {
 
         private readonly IProductRepository _productRepository;
-        public ProductController(IProductRepository productRepository)
+        private readonly ISectionRepository _sectionRepository;
+        public ProductController(IProductRepository productRepository, ISectionRepository sectionRepository)
         {
             _productRepository = productRepository;
+            _sectionRepository = sectionRepository;
         }
         public IActionResult Index()
         {
             var model = _productRepository.GetAll();
+            var section = _sectionRepository.GetById(11);
 
+            ViewBag.Section = new SectionModelAdmin()
+            {
+                Id = section.Id,
+                Name = section.Name,
+                Description = section.Description,
+                ButtonText = section.ButtonText,
+                ButtonUrl = section.ButtonUrl,
+                DisplayOrder = section.DisplayOrder,
+                IsVisible = section.IsVisible,
+                ReturnUrl = "/Admin/Product/Index",
+                PageId = 3.3
+            };
             ViewBag.PageId = 3.3;
             return View(model);
         }

@@ -1,4 +1,7 @@
 ﻿@model List<Product>
+@{ 
+    var sectionInfos = ViewBag.Section as SectionModelAdmin;
+}
 
 @if (TempData["message"] != null)
 {
@@ -6,6 +9,52 @@
 }
 
 <div class="main-content-inner">
+    <!-- bölüm ayarı start -->
+    <div class="col-12 mt-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Bölüm Ayarları</h4>
+                <p class="text-muted font-14 mb-4">Bu kısımda, anasayfada gözüken 'ürünler bölümünü' düzenleyebilirsiniz.</p>
+                <hr>
+                <form action="/Admin/Section/Edit" method="POST">
+                    <input type="hidden" name="Id" value="@sectionInfos.Id">
+                    <input type="hidden" name="ReturnUrl" value="@sectionInfos.ReturnUrl">
+                    <input type="hidden" name="PageId" value="@sectionInfos.PageId">
+                    <input type="hidden" name="Name" value="@sectionInfos.Name">
+                    <input type="hidden" name="Description" value="@sectionInfos.Description">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="DisplayOrder">Bölüm Sırası</label>
+                            <input class="form-control" type="number" name="DisplayOrder" value="@sectionInfos.DisplayOrder">
+                            <div class="valid-feedback">
+                                İyi gözüküyor!
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="col-form-label">Bölüm Görünürlüğü</label>
+                            <select class="custom-select" name="IsVisible">
+                                @if (sectionInfos.IsVisible)
+                                {
+                                    <option value="1">Göster</option>
+                                    <option value="0">Gizle</option>
+                                }
+                                else
+                                {
+                                    <option value="0">Gizle</option>
+                                    <option value="1">Göster</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-auto text-right">
+                        <button type="submit" class="btn btn-rounded btn-kaydet">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- bölüm ayarı end -->
     <!-- Progress Table start -->
     <div class="col-12 mt-3" id="urunler">
         <div class="card">
