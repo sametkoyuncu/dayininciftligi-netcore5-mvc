@@ -1,0 +1,68 @@
+﻿@model ProductModel
+<div class="main-content-inner">
+
+    <!-- row area start -- mt-5 üstte alan olduğu için gerekli -->
+    <div class="row mt-3">
+        <!-- Input Sizes start -->
+        <div class="col-10 mx-auto">
+            <div class="card">
+                <div class="modal-header bg-mor">
+                    <h4 class="header-title bej-yazi" style="margin-bottom: 0;">@Model.Name Ürününü Düzenle</h4>
+                </div>
+                @*<form asp-area="Admin" asp-controller="SocialMedia" asp-action="Edit" method="POST">*@
+                <form action="/Admin/Product/Edit" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="Id">
+                    <div class="card-body">
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="Name">Ürün Adı</label>
+                            <input class="form-control" asp-for="Name">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-row col-md-12 mb-3">
+                            <div class="col-md-9 mb-3">
+                                <label for="validationCustom01">Görsel</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-mor">Yeni Yükle</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="hidden" asp-for="ImageUrl">
+                                        <input type="file" name="fileImage" class="custom-file-input">
+                                        <label class="custom-file-label" for="inputGroupFile01">Değiştirmek için bir görsel seçiniz..</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3 text-center">
+                                <img src="~/img/products/@Model.ImageUrl" alt="" width="150px" padding: 7px;">
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="ImageAltText">Görsel 'alt' Metni</label>
+                            <input class="form-control" asp-for="ImageAltText">
+                            <span asp-validation-for="ImageAltText" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="DisplayOrder">Görüntülenme Sırası</label>
+                            <input class="form-control" asp-for="DisplayOrder" min="0" max="99" step="1">
+                            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                        </div>
+                        <div class="form-row mb-3 mx-2 custom-control custom-checkbox custom-control-inline">
+                            <input class="form-check-input" type="checkbox" asp-for="IsVisible" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Görünür
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-acik-gri">
+                        <a href="/Admin/Product/Index" class="btn btn-geri btn-rounded"><i class="ti-arrow-left"></i>&nbsp; Geri Dön</a>
+                        <button type="submit" class="btn btn-kaydet btn-rounded"><i class="ti-check"></i>&nbsp; Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Input Sizes end -->
+    </div>
+    <!-- row area end-->
+</div>
+    </div>
+<!-- main content area end -->
