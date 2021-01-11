@@ -14,64 +14,44 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
     [Area("Admin")]
     public class SectionController : Controller
     {
-        private readonly IHomeBannerRepository _homeBannerRepository;
+        private readonly ISectionRepository _sectionRepository;
 
-        public SectionController(IHomeBannerRepository homeBannerRepository)
+        public SectionController(ISectionRepository sectionRepository)
         {
-            _homeBannerRepository = homeBannerRepository;
+            _sectionRepository = sectionRepository;
         }
-        [Area("Admin")]
+
         public IActionResult Index()
         {
             return View();
         }
         
-        public IActionResult HomeBanner()
-        {
-            var model = _homeBannerRepository.GetFirstVisible();
-            ViewBag.PageId = 3.2;
-            return View(model);
-        }
-
         [HttpPost]
-        public async Task<IActionResult> HomeBannerEdit(HomeBannerModel model, IFormFile fileBgImage)
+        public IActionResult Edit(int Id, string Name, string Description, string ButtonText, 
+            string ButtonUrl, int DisplayOrder, int IsVisible, string ReturnUrl, double PageId)
         {
-            if (!ModelState.IsValid)
+            var entity = _sectionRepository.GetById(Id);
+            if(entity == null)
             {
-                CreateMessage("Beklenmeyen bir hata oluştu.", "warning");
-                return Redirect("/Admin/Section/HomeBanner");
-            }
-            var entity = _homeBannerRepository.GetById(model.Id);
-
-            if (entity == null)
-            {
+                CreateMessage("Bölüm bulunamadı.","danger");
                 return NotFound();
             }
 
-            entity.Header = model.Header;
-            entity.Text = model.Text;
-            entity.ButtonText = model.ButtonText;
-            entity.ButtonUrl = model.ButtonUrl;
-            entity.BgImageUrl = model.BgImageUrl;
+            entity.Name = Name;
+            entity.Description = Description;
+            entity.ButtonText = ButtonText;
+            entity.ButtonUrl = ButtonUrl;
+            entity.DisplayOrder = DisplayOrder;
+            if(IsVisible == 1)
+                entity.IsVisible = true;
+            else
+                entity.IsVisible = false;
 
-            if (fileBgImage != null)
-            {
-                var extension = Path.GetExtension(fileBgImage.FileName);
-                var randomName = string.Format($"{Guid.NewGuid()}{extension}");
-                entity.BgImageUrl = randomName;
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\bg", randomName);
+            _sectionRepository.Update(entity);
 
-                using (var stream = new FileStream(path, FileMode.Create))
-                {
-                    await fileBgImage.CopyToAsync(stream);
-                }
-            }
-
-            _homeBannerRepository.Update(entity);
-
-            ViewBag.PageId = 3.2;
-            CreateMessage("Değişiklikler başarılı bir şekilde kaydedildi.", "success");
-            return Redirect("/Admin/Section/HomeBanner");
+            CreateMessage("Değişiklikler başarılı bir şeklde kaydedildi..", "success");
+            ViewBag.PageId = PageId;
+            return Redirect(ReturnUrl);
         }
 
         private void CreateMessage(string message, string alerttype)
