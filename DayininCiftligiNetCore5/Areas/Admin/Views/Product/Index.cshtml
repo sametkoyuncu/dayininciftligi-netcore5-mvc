@@ -1,0 +1,74 @@
+﻿@model List<Product>
+
+@if (TempData["message"] != null)
+{
+    <partial name="_ResultMessage" model="@(TempData.Get<AlertMessageAdmin>("message"))" />
+}
+
+<div class="main-content-inner">
+    <!-- Progress Table start -->
+    <div class="col-12 mt-3" id="urunler">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h4 class="header-title">Kayıtlı Ürünler</h4>
+                    </div>
+                    <div class="col text-right">
+                        <button type="button" class="btn btn-rounded btn-yeniekle btn-xs" data-toggle="modal" data-target="#yeniurunekle"><i class="ti-plus"></i> &nbsp;Yeni Ekle</button>
+                    </div>
+                </div>
+                <p class="text-muted font-14 mb-4">Bu sayfada, sitede bulunan ürünler bölümünü düzenleyebilirsiniz. İster yeni ürün ekleyin, ister bazı bilgileri değiştirin, isterseniz ürün silin, isterseniz de bu bölümü gizleyin.</p>
+                <div class="single-table">
+                    <div class="table-responsive">
+                        <table class="table table-hover progress-table text-center">
+                            <thead class="text-uppercase bg-mor">
+                                <tr>
+                                    <th scope="col">Sırası</th>
+                                    <th class="text-left" scope="col">Adı</th>
+                                    <th scope="col">Görsel</th>
+                                    <th scope="col">Durum</th>
+                                    <th scope="col">Ayarlar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var product in Model)
+                                {
+                                    <tr>
+                                        <th scope="row">@product.DisplayOrder</th>
+                                        <td class="text-left">@product.Name</td>
+                                        <td><img src="~/img/products/@product.ImageUrl" alt="@product.ImageAltText"></td>
+                                        <td>
+                                            @if (@product.IsVisible)
+                                            {
+                                                <span class="status-p bg-yesil">Görünür</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="status-p bg-kirmizi">Gizli</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <ul class="d-flex justify-content-center">
+                                                <li class="mr-3"><a href="/Admin/Product/Edit/@product.Id" class="text-secondary" title="Düzenle"><i class="fa fa-edit"></i></a></li>
+                                                <li>
+                                                    <form action="/Admin/Product/Delete" method="POST" style="display: inline;">
+                                                        <input type="hidden" name="Id" value="@product.Id">
+                                                        <button type="submit" class="text-danger" style="border: none; background-color: transparent;" title="Sil"><i class="ti-trash"></i></button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Progress Table end -->
+</div>
+<!-- main content area end -->
+@await Component.InvokeAsync("ProductCreateComponent") 
