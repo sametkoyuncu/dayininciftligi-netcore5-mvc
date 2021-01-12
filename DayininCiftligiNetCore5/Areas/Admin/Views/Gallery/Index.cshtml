@@ -1,0 +1,155 @@
+﻿@model List<GalleryImage>
+@{
+    var sectionInfos = ViewBag.Section as SectionAdminModel;
+}
+
+@if (TempData["message"] != null)
+{
+    <partial name="_ResultMessage" model="@(TempData.Get<AlertMessageAdmin>("message"))" />
+}
+<div class="main-content-inner">
+
+    <!-- Textual inputs start -->
+    <div class="col-12 mt-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Galeri Bölümü Ayarları</h4>
+                <p class="text-muted font-14 mb-4">Bu sayfada, anasayfada gözüken 'galeri bölümünü' düzenleyebilirsiniz.</p>
+                <hr>
+                <form action="/Admin/Gallery/Edit" method="POST">
+                    <input type="hidden" name="Id" value="@sectionInfos.Id">
+                    <input type="hidden" name="ReturnUrl" value="@sectionInfos.ReturnUrl">
+                    <input type="hidden" name="PageId" value="@sectionInfos.PageId">
+                    <input type="hidden" name="Name" value="@sectionInfos.Name">
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="Description">Alt Başlık</label>
+                            <input class="form-control" type="text" name="Description" value="@sectionInfos.Description">
+                            <div class="valid-feedback">
+                                İyi gözüküyor!
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="DisplayOrder">Bölüm Sırası</label>
+                            <input class="form-control" type="text" name="DisplayOrder" value="@sectionInfos.DisplayOrder">
+                            <div class="valid-feedback">
+                                İyi gözüküyor!
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="col-form-label">Bölüm Görünürlüğü</label>
+                            <select class="custom-select" name="IsVisible">
+                                @if (sectionInfos.IsVisible)
+                                {
+                                    <option value="1">Göster</option>
+                                    <option value="0">Gizle</option>
+                                }
+                                else
+                                {
+                                    <option value="0">Gizle</option>
+                                    <option value="1">Göster</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="ButtonText">Bağlantı Metni</label>
+                            <input class="form-control" type="text" name="ButtonText" value="@sectionInfos.ButtonText">
+                            <div class="valid-feedback">
+                                İyi gözüküyor!
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="ButtonUrl">Bağlantı Adresi</label>
+                            <input class="form-control" type="text" name="ButtonUrl" value="@sectionInfos.ButtonUrl">
+                            <div class="valid-feedback">
+                                İyi gözüküyor!
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-auto text-right">
+                        <button type="submit" class="btn btn-rounded btn-kaydet">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Textual inputs end -->
+    <!-- Progress Table start -->
+    <div class="col-12 mt-3" id="fotograflar">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h4 class="header-title">Fotoğraflar</h4>
+                    </div>
+                    <div class="col text-right">
+                        <button type="button" class="btn btn-rounded btn-yeniekle btn-xs" data-toggle="modal" data-target="#yenifotoekle"><i class="ti-plus"></i> &nbsp;Yeni Ekle</button>
+                    </div>
+                </div>
+                <p class="text-muted font-14">Bu kısımda, galeride bulunan fotoğrafları düzenleyebilirsiniz. İster yeni fotoğraf ekleyin, ister bazı bilgileri değiştirin, isterseniz fotoğraf silin, isterseniz de fotoğraf gizleyin.</p>
+                <br>
+                <div class="single-table">
+                    <div class="table-responsive">
+                        <table class="table table-hover progress-table text-center">
+                            <thead class="text-uppercase bg-mor">
+                                <tr>
+                                    <th scope="col">Sıra</th>
+                                    <th scope="col">Görsel</th>
+                                    <th scope="col">Anasayfa</th>
+                                    <th scope="col">Diğer Sayfalar</th>
+                                    <th scope="col">Ayarlar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var image in Model)
+                                {
+                                    <tr>
+                                        <th scope="row">@image.DisplayOrder</th>
+                                        <td><img src="~/img/gallery/@image.ImageUrl" alt="@image.ImageAltText" width="150px" height="auto"></td>
+                                        <td>
+                                            @if (image.IsHome)
+                                            {
+                                                <span class="status-p bg-yesil">Görünür</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="status-p bg-kirmizi">Gizli</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (image.IsVisible)
+                                            {
+                                                <span class="status-p bg-yesil">Görünür</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="status-p bg-kirmizi">Gizli</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <ul class="d-flex justify-content-center">
+                                                <li class="mr-3"><a href="/Admin/Gallery/Edit/@image.Id" class="text-secondary" title="Düzenle"><i class="fa fa-edit"></i></a></li>
+                                                <li>
+                                                    <form action="/Admin/Gallery/Delete" method="POST" style="display: inline;">
+                                                        <input type="hidden" name="Id" value="@image.Id">
+                                                        <button type="submit" class="text-danger" style="border: none; background-color: transparent;" title="Sil"><i class="ti-trash"></i></button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Progress Table end -->
+</div>
+<!-- main content area end -->
+@await Component.InvokeAsync("GalleryImageCreateComponent") 

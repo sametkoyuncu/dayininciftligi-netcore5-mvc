@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\admin\" />
+    <Folder Include="wwwroot\img\gallery\" />
   </ItemGroup>
 
 </Project>
