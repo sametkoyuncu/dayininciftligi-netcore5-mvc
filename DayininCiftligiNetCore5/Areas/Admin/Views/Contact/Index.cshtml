@@ -1,0 +1,126 @@
+﻿@model Contact
+@{
+    var sectionInfos = ViewBag.Section as SectionAdminModel;
+}
+
+@if (TempData["message"] != null)
+{
+    <partial name="_ResultMessage" model="@(TempData.Get<AlertMessageAdmin>("message"))" />
+}
+
+<div class="main-content-inner">
+    <!-- bölüm ayarı start -->
+    <div class="col-12 mt-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Bölüm Ayarları</h4>
+                <p class="text-muted font-14 mb-4">Bu kısımda, anasayfada gözüken 'iletişim' bölümünü düzenleyebilirsiniz.</p>
+                <hr>
+                <form action="/Admin/Section/Edit" method="POST">
+                    <input type="hidden" name="Id" value="@sectionInfos.Id">
+                    <input type="hidden" name="ReturnUrl" value="@sectionInfos.ReturnUrl">
+                    <input type="hidden" name="PageId" value="@sectionInfos.PageId">
+                    <input type="hidden" name="Name" value="@sectionInfos.Name">
+                    <input type="hidden" name="Description" value="@sectionInfos.Description">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="DisplayOrder">Bölüm Sırası</label>
+                            <input class="form-control" type="number" name="DisplayOrder" value="@sectionInfos.DisplayOrder">
+                            <div class="valid-feedback">
+                                İyi gözüküyor!
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="col-form-label">Bölüm Görünürlüğü</label>
+                            <select class="custom-select" name="IsVisible">
+                                @if (sectionInfos.IsVisible)
+                                {
+                                    <option value="1">Göster</option>
+                                    <option value="0">Gizle</option>
+                                }
+                                else
+                                {
+                                    <option value="0">Gizle</option>
+                                    <option value="1">Göster</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-auto text-right">
+                        <button type="submit" class="btn btn-rounded btn-kaydet">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- bölüm ayarı end -->
+    <!-- Textual inputs start -->
+    <div class="col-12 mt-3" id="iletisim">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">İletişim Bilgileri</h4>
+                <p class="text-muted font-14 mb-4">Bu kısımda iletişim bilgilerinizi düzenleyebilirsiniz.</p>
+                <hr>
+                <form action="/Admin/Contact/Edit" method="POST">
+                    <input type="hidden" asp-for="Id">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label  asp-for="Address">Adres</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-mor" id="basic-addon1"><i class="ti-home"></i></span>
+                                <input class="form-control" asp-for="Address">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label  asp-for="GoogleMapsUrl">Google Maps Bağlantısı</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-mor" id="basic-addon1"><i class="ti-location-pin"></i></span>
+                                <input class="form-control" type="text" asp-for="GoogleMapsUrl">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Phone">Telefon Numarası</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-mor" id="basic-addon1"><i class="ti-mobile"></i></span>
+                                <input class="form-control" asp-for="Phone">
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Email">E-posta Adresi</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-mor" id="basic-addon1"><i class="ti-email"></i></span>
+                                <input class="form-control" asp-for="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="FbUserName">Facebook Kullanıcı Adı</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-mor" id="basic-addon1"><i class="ti-facebook"></i></span>
+                                <input class="form-control" asp-for="FbUserName">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="InstaUserName">İnstagram Kullanıcı Adı</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-mor" id="basic-addon1"><i class="ti-instagram"></i></span>
+                                <input class="form-control" asp-for="InstaUserName">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-auto text-right">
+                        <button type="submit" class="btn btn-rounded btn-kaydet">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Textual inputs end -->
+</div>
+<!-- main content area end -->
