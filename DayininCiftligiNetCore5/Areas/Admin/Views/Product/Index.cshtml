@@ -1,6 +1,6 @@
 ﻿@model List<Product>
 @{ 
-    var sectionInfos = ViewBag.Section as SectionModelAdmin;
+    var sectionInfos = ViewBag.Section as SectionAdminModel;
 }
 
 @if (TempData["message"] != null)
@@ -88,7 +88,7 @@
                                         <td class="text-left">@product.Name</td>
                                         <td><img src="~/img/products/@product.ImageUrl" alt="@product.ImageAltText"></td>
                                         <td>
-                                            @if (@product.IsVisible)
+                                            @if (product.IsVisible)
                                             {
                                                 <span class="status-p bg-yesil">Görünür</span>
                                             }
