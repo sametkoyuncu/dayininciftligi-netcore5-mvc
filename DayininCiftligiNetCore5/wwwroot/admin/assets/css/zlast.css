@@ -1,15 +1,15 @@
 /* yeni ekle butonu */
 .btn-yeniekle {
-    background:linear-gradient(to right, #11998e 0%, #38ef7d 100%); 
-    border-color:#38ef7d; 
-    color:beige;
+    background: linear-gradient(to right, #11998e 0%, #38ef7d 100%);
+    border-color: #11998e;
+    color: beige;
 }
 
 /* kaydet butonu */
 .btn-kaydet {
-    background:linear-gradient(to right, #3a7bd5 0%, #00d2ff 100%); 
-    border-color:#00d2ff; 
-    color:beige;
+    background: linear-gradient(to right, #3a7bd5 0%, #00d2ff 100%);
+    border-color: #3a7bd5;
+    color: beige;
 }
 .btn-geri {
     background:linear-gradient(to right, #fc4a1a 0%, #f7b733 100%); 
@@ -28,9 +28,9 @@
 }
 
 .btn-kirmizi {
-    background:linear-gradient(to right, #D31027 0%, #EA384D 100%); 
-    border-color:#38ef7d; 
-    color:beige;
+    background: linear-gradient(to right, #D31027 0%, #EA384D 100%);
+    border-color: #D31027;
+    color: beige;
 }
 
 /*gradient arkaplanlar*/
@@ -40,15 +40,15 @@
 }
 
 .bg-yesil {
-    background:linear-gradient(to right, #11998e 0%, #38ef7d 100%); 
-    border-color:#38ef7d; 
-    color:beige;
+    background: linear-gradient(to right, #11998e 0%, #38ef7d 100%);
+    border-color: #11998e;
+    color: beige;
 }
 
 .bg-kirmizi {
-    background:linear-gradient(to right, #D31027 0%, #EA384D 100%); 
-    border-color:#38ef7d; 
-    color:beige;
+    background: linear-gradient(to right, #D31027 0%, #EA384D 100%);
+    border-color: #D31027;
+    color: beige;
 }
 
 .bg-mavi {

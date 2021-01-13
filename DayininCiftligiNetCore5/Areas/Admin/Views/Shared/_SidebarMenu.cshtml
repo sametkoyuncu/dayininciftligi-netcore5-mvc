@@ -7,23 +7,32 @@
                 yani 1. li bir collapse ve altında 3 li var
             -->
             <ul class="metismenu" id="menu">
-                <li class="@(ViewBag.PageId==0?"active":"")">
+                @*<li>
                     <a href="javascript:void(0)" aria-expanded="true">
                         <i class="ti-dashboard"></i><span>Kontrol Paneli</span>
                     </a>
-                    <ul class="collapse">
-                        <li><a href="index.php?pg=1">Anasayfa</a></li>
-                        <li><a href="raporlar.php?pg=2">Raporlar</a></li>
+                    <ul class="collapse @((int)ViewBag.PageId==0?"in":"")">
+                        <li class="@(ViewBag.PageId==0.1?"active":"")"><a href="/Admin/Home/Index">Anasayfa</a></li>
+                        <li><a href="#">Raporlar</a></li>
                     </ul>
+                </li>*@
+                <li class="@(ViewBag.PageId==0.1?"active":"")">
+                    <a href="/Admin/Home/Index">
+                        <i class="ti-dashboard"></i>
+                        <span>Anasayfa</span>
+                    </a>
                 </li>
+
+                <hr style="border:0.5px solid darkslategrey">
+
                 <li class="@(ViewBag.PageId==1?"active":"")">
-                   <a href="/admin/websitedata/index">
-                       <i class="ti-settings"></i>
+                    <a href="/Admin/WebsiteData/Index">
+                        <i class="ti-settings"></i>
                         <span>Genel Ayarlar</span>
                     </a>
                 </li>
                 <li class="@(ViewBag.PageId==2?"active":"")">
-                    <a href="/admin/socialmedia/index">
+                    <a href="/Admin/SocialMedia/Index">
                         <i class="ti-instagram "></i>
                         <span>Sosyal Ağlar</span>
                     </a>
@@ -33,54 +42,38 @@
                         <i class="ti-layout-grid2"></i>
                         <span>Anasayfa Bölümleri</span>
                     </a>
-                    <ul class="collapse @((int)ViewBag.PageId==3?"in":"")"">
+                    <ul class="collapse @((int)ViewBag.PageId==3?"in":"")">
                         <li class="@(ViewBag.PageId==3.1?"active":"")"><a href="/Admin/Navigation/Index">Üst Kısım</a></li>
                         <li class="@(ViewBag.PageId==3.2?"active":"")"><a href="/Admin/HomeBanner/Index">Giriş</a></li>
                         <li class="@(ViewBag.PageId==3.3?"active":"")"><a href="/Admin/Product/Index">Ürünler</a></li>
                         <li class="@(ViewBag.PageId==3.4?"active":"")"><a href="/Admin/Gallery/Index">Galeri</a></li>
-                        <li class="@(ViewBag.PageId==3.5?"active":"")"><a href="">Blog</a></li>
+                        <li class="@(ViewBag.PageId==3.5?"active":"")" disabled><a href="#"><del>Blog</del></a></li>
                         <li class="@(ViewBag.PageId==3.6?"active":"")"><a href="/Admin/Contact/Index">İletişim</a></li>
-                        <li class="@(ViewBag.PageId==3.7?"active":"")"><a href="">Alt Kısım</a></li>
+                        <li class="@(ViewBag.PageId==3.7?"active":"")" disabled><a href="#"><del>Alt Kısım</del></a></li>
                     </ul>
                 </li>
-                <!-- açık olan sayfanın satırına 'active' classı ekleme -->
-                <!-- page id ye göre class ekliyor -->
-                @*<li <?php if($page_id==1 || $page_id==2){ echo 'class="active"';} ?>>
-             <a href="javascript:void(0)" aria-expanded="true"><i
-                     class="ti-dashboard"></i><span>Kontrol Paneli</span></a>
-             <ul class="collapse">
-                 <li <?php if($page_id==1){ echo 'class="active"';} ?>><a
-                         href="index.php?pg=1">Anasayfa</a></li>
-                 <li <?php if($page_id==2){ echo 'class="active"';} ?>><a
-                         href="raporlar.php?pg=2">Raporlar</a></li>
-             </ul>
-         </li>
-        <hr style="border:0.5px solid darkslategrey">
-        <li <?php if($page_id==3){ echo 'class="active"';} ?>>
-             <a href="site-genel-ayarlar.php?pg=3"><i class="ti-settings"></i><span>Genel
-                     Ayarlar</span></a>
-         </li>
-        <li <?php if($page_id>=5 && $page_id<=11){ echo 'class="active"';} ?>>
-             <a href="javascript:void(0)" aria-expanded="true"><i
-                     class="ti-layout-grid2"></i><span>Anasayfa Bölümleri
-                 </span></a>
-             <ul class="collapse">
-                 <li <?php if($page_id==5){ echo 'class="active"';} ?>><a
-                         href="ust-kisim.php?pg=5">Üst Kısım</a></li>
-                 <li <?php if($page_id==6){ echo 'class="active"';} ?>><a
-                         href="giris.php?pg=6">Giriş</a></li>
-                 <li <?php if($page_id==7){ echo 'class="active"';} ?>><a
-                         href="urunler.php?pg=7">Ürünler</a></li>
-                 <li <?php if($page_id==8){ echo 'class="active"';} ?>><a
-                         href="galeri.php?pg=8">Galeri</a></li>
-                 <li <?php if($page_id==9){ echo 'class="active"';} ?>><a
-                         href="blog.php?pg=9">Blog</a></li>
-                 <li <?php if($page_id==10){ echo 'class="active"';} ?>><a
-                         href="iletisim.php?pg=10">İletişim</a></li>
-                 <li <?php if($page_id==11){ echo 'class="active"';} ?>><a
-                         href="alt-kisim.php?pg=11">Alt Kısım</a></li>
-             </ul>
-         </li>
+
+                <hr style="border:0.5px solid darkslategrey">
+
+                <li>
+                    <a href="javascript:void(0)" aria-expanded="true">
+                        <i class="ti-email"></i><span>
+                            E-Postalar
+                        </span>
+                    </a>
+                    <ul class="collapse @((int)ViewBag.PageId==4?"in":"")">
+                        <li class="@(ViewBag.PageId==4.1?"active":"")"><a href="/Admin/Message/Index">Gelen Kutusu</a></li>
+                        <li class="@(ViewBag.PageId==4.2?"active":"")"><a href="/Admin/Message/Archive">Arşiv</a></li>
+                        <li class="@(ViewBag.PageId==4.3?"active":"")"><a href="/Admin/Message/Trash">Çöp Kutusu</a></li>
+                    </ul>
+                </li>
+                <li class="@(ViewBag.PageId==5?"active":"")">
+                    <a href="/Admin/Subscriber/Index">
+                        <i class="ti-user"></i>
+                        <span>Aboneler</span>
+                    </a>
+                </li>
+                @*
         <li>
             <a href="javascript:void(0)" aria-expanded="true">
                 <i class="ti-book"></i><span>

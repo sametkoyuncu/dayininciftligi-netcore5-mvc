@@ -1,0 +1,71 @@
+﻿@model List<Message>
+@{
+    int index = 1;
+}
+
+@if (TempData["message"] != null)
+{
+    <partial name="_ResultMessage" model="@(TempData.Get<AlertMessageAdmin>("message"))" />
+}
+
+<!-- sosyal medya start -->
+<div class="col-12 mt-3 mb-5">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <h4 class="header-title">Çöp Kutusu&nbsp;&nbsp;</h4>
+                </div>
+            </div>
+            @*<p class="text-muted font-14 mb-4">Bu kısımda, ....</p>*@
+            <div class="single-table">
+                <div class="table-responsive">
+                    <table class="table table-hover progress-table text-left">
+                        <thead class="text-uppercase bg-mor">
+                            <tr>
+                                <th scope="col">Sıra</th>
+                                <th scope="col">Konu</th>
+                                <th scope="col">Ad Soyad</th>
+                                <th scope="col">Eposta</th>
+                                <th class="text-center" scope="col">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var message in Model)
+                            {
+                                <tr class="@(!message.IsRead?"table-secondary":"")">
+                                    <td>@index</td>
+                                    <td>@message.Subject</td>
+                                    <td>@message.Name</td>
+                                    <td>@message.Email</td>
+                                    <td>
+                                        <ul class="d-flex justify-content-center">
+                                            <li class="mr-3">
+                                                <a href="/Admin/Message/Read/@message.Id" class="text-success" title="Oku"><i class="ti-eye"></i></a>
+                                            </li>
+                                            <li class="mr-3">
+                                                <form action="/Admin/Message/MoveToArchive" method="POST" style="display: inline;">
+                                                    <input type="hidden" name="Id" value="@message.Id">
+                                                    <button type="submit" class="text-info" style="border: none; background-color: transparent;" title="Arşivle"><i class="ti-archive"></i></button>
+                                                </form>
+                                            </li>
+                                            <li>
+                                                <form action="/Admin/Message/MoveToTrash" method="POST" style="display: inline;">
+                                                    <input type="hidden" name="Id" value="@message.Id">
+                                                    <button type="submit" class="text-danger" style="border: none; background-color: transparent;" title="Sil"><i class="ti-trash"></i></button>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                index = index + 1;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- sosyal medya end -->
+<!-- yeni sosyal medya hesabı ekleyin -->

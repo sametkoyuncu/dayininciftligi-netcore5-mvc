@@ -1,0 +1,56 @@
+﻿@model Message
+
+@if (TempData["message"] != null)
+{
+    <partial name="_ResultMessage" model="@(TempData.Get<AlertMessageAdmin>("message"))" />
+}
+
+<!-- sosyal medya start -->
+<div class="col-12 mt-3 mb-5">
+    <div class="card">
+        <div class="card-header bg-mor">
+            <div class="row">
+                <div class="col">
+                    <h4 class="header-title text-light mb-0">Konu: @Model.Subject</h4>
+                </div>
+                <div class="col text-right">
+                    <form action="/Admin/Message/NotRead" method="POST" style="display: inline;">
+                        <input type="hidden" name="Id" value="@Model.Id">
+                        <button type="submit" class="btn btn-kaydet btn-rounded btn-xs"><i class="ti-eye"></i>&nbsp; Okunmadı Say</button>
+                    </form>
+                    <form action="/Admin/Message/MoveToArchive" method="POST" style="display: inline;">
+                        <input type="hidden" name="Id" value="@Model.Id">
+                        <button type="submit" class="btn btn-yeniekle btn-rounded btn-xs"><i class="ti-archive"></i>&nbsp; Arşivle</button>
+                    </form>
+                    <form action="/Admin/Message/MoveToTrash" method="POST" style="display: inline;">
+                        <input type="hidden" name="Id" value="@Model.Id">
+                        <button type="submit" class="btn btn-kirmizi btn-rounded btn-xs"><i class="ti-trash"></i>&nbsp; Çöp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <p>
+                        <small>Gönderen:</small> <br />
+                        @Model.Name <br />
+                        <a href="mailto:@Model.Email">@Model.Email</a> <br />
+                    </p>
+                    <hr />
+                    <p>
+                        <small>Mesaj:</small> <br />
+                        @Model.Text
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col text-right">
+                    <button type="button" class="btn btn-geri btn-rounded btn-xs"><i class="ti-arrow-left"></i>&nbsp; Geri Dön</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
