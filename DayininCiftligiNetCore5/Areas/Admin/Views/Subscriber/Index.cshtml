@@ -1,0 +1,79 @@
+﻿@model List<Subscriber>
+
+@if (TempData["message"] != null)
+{
+    <partial name="_ResultMessage" model="@(TempData.Get<AlertMessageAdmin>("message"))" />
+}
+
+<!-- sosyal medya start -->
+<div class="col-12 mt-3 mb-5">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <h4 class="header-title">Aboneler&nbsp;&nbsp;</h4>
+                </div>
+                @*<div class="col text-right">
+                    <button type="button" class="btn btn-rounded btn-yeniekle btn-xs" data-toggle="modal" data-target="#yenismekle"><i class="ti-plus"></i> &nbsp;Yeni Ekle</button>
+                </div>*@
+            </div>
+            @*<p class="text-muted font-14 mb-4">Bu kısımda, sosyal medya hesaplarınızı siteye ekleyebilir, veya varolan hesaplarınızı düzenleyebilirsiniz.</p>*@
+            <div class="single-table">
+                <div class="table-responsive">
+                    <table class="table table-hover progress-table text-left">
+                        <thead class="text-uppercase bg-mor">
+                            <tr>
+                                <th scope="col">Sıra</th>
+                                <th scope="col">Eposta</th>
+                                <th scope="col" class="text-center">Durum</th>
+                                <th scope="col" class="text-center">Ayarlar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var subscriber in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@subscriber.Id</th>
+                                    <td>@subscriber.Email</td>
+                                    <td class="text-center">
+                                        @if (subscriber.IsDeleted)
+                                        {
+                                            <span class="status-p bg-kirmizi">Pasif</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="status-p bg-yesil">Aktif</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <ul class="d-flex justify-content-center">
+                                            <li>
+                                                @if (subscriber.IsDeleted)
+                                                {
+                                                    <form action="/Admin/Subscriber/MoveToActive" method="POST" style="display: inline;">
+                                                        <input type="hidden" name="Id" value="@subscriber.Id">
+                                                        <button type="submit" class="text-success" style="border: none; background-color: transparent;" title="Aktif Yap"><i class="ti-check font-weight-bold"></i></button>
+                                                    </form>
+                                                }
+                                                else
+                                                {
+                                                    <form action="/Admin/Subscriber/MoveToNotActive" method="POST" style="display: inline;">
+                                                        <input type="hidden" name="Id" value="@subscriber.Id">
+                                                        <button type="submit" class="text-danger" style="border: none; background-color: transparent;" title="Pasif Yap"><i class="ti-close font-weight-bold"></i></button>
+                                                    </form>
+                                                }
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- sosyal medya end -->
+<!-- yeni sosyal medya hesabı ekleyin -->
+@await Component.InvokeAsync("SocialMediaCreateComponent")
