@@ -20,26 +20,42 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            var model = _messageRepository.GetMessages();
+            var emails = _messageRepository.GetMessages();
             ViewBag.PageId = 4.1;
+            var model = new MessageModel()
+            {
+                Messages = emails,
+                ReturnUrlMessageAction = "Index"
+            };
             return View(model);
         }
 
         public IActionResult Archive()
         {
-            var model = _messageRepository.GetArchived();
+            var emails = _messageRepository.GetArchived();
             ViewBag.PageId = 4.2;
+            var model = new MessageModel()
+            {
+                Messages = emails,
+                ReturnUrlMessageAction = "Archive"
+            };
             return View(model);
         }
 
         public IActionResult Trash()
         {
-            var model = _messageRepository.GetDeleted();
+            var emails = _messageRepository.GetDeleted();
             ViewBag.PageId = 4.3;
+            var model = new MessageModel()
+            {
+                Messages = emails,
+                ReturnUrlMessageAction = "Trash"
+            };
             return View(model);
         }
 
-        public IActionResult Read(int? id)
+        [Route("/Admin/Message/Read/{id}/{returnUrlMessageAction}")]
+        public IActionResult Read(int? id, string returnUrlMessageAction)
         {
             if (id == null)
             {
@@ -57,7 +73,7 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
 
             _messageRepository.Update(entity);
 
-            var model = new Message()
+            var model = new ReadMessageModel()
             {
                 Id = entity.Id,
                 Name = entity.Name,
@@ -66,7 +82,8 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
                 Text = entity.Text,
                 IsRead = entity.IsRead,
                 IsArchived = entity.IsArchived,
-                IsDeleted = entity.IsDeleted
+                IsDeleted = entity.IsDeleted,
+                ReturnUrlMessageAction = returnUrlMessageAction
             };
             ViewBag.PageId = 4;
             return View(model);

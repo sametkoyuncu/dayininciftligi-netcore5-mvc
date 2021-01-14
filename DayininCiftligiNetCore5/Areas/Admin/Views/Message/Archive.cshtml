@@ -1,4 +1,4 @@
-﻿@model List<Message>
+﻿@model MessageModel
 @{
     int index = 1;
 }
@@ -31,7 +31,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var message in Model)
+                            @foreach (var message in Model.Messages)
                             {
                                 <tr class="@(!message.IsRead?"table-secondary":"")">
                                     <td>@index</td>
@@ -41,7 +41,7 @@
                                     <td>
                                         <ul class="d-flex justify-content-center">
                                             <li class="mr-3">
-                                                <a href="/Admin/Message/Read/@message.Id" class="text-success" title="Oku"><i class="ti-eye"></i></a>
+                                                <a href="/Admin/Message/Read/@message.Id/@Model.ReturnUrlMessageAction" class="text-success" title="Oku"><i class="ti-eye"></i></a>
                                             </li>
                                             <li class="mr-3">
                                                 <form action="/Admin/Message/MoveToInbox" method="POST" style="display: inline;">

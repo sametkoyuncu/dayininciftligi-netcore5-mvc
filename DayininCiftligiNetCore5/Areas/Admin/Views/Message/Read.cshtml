@@ -1,5 +1,8 @@
-﻿@model Message
+﻿@model ReadMessageModel
+@{ 
 
+    string ReturnUrlMessages = ViewBag.ReReturnUrlMessages;
+}
 @if (TempData["message"] != null)
 {
     <partial name="_ResultMessage" model="@(TempData.Get<AlertMessageAdmin>("message"))" />
@@ -70,7 +73,7 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col text-right">
-                    <button type="button" class="btn btn-geri btn-rounded btn-xs"><i class="ti-arrow-left"></i>&nbsp; Geri Dön</button>
+                    <a href="/Admin/Message/@Model.ReturnUrlMessageAction" class="text-light btn btn-geri btn-rounded btn-xs"><i class="ti-arrow-left"></i>&nbsp; Geri Dön</a>
                 </div>
             </div>
         </div>
