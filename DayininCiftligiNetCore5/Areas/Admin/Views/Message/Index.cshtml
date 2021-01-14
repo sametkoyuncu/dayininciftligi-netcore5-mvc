@@ -46,12 +46,14 @@
                                         <li class="mr-3">
                                             <form action="/Admin/Message/MoveToArchive" method="POST" style="display: inline;">
                                                 <input type="hidden" name="Id" value="@message.Id">
+                                                <input type="hidden" name="ReturnUrl" value="/Admin/Message/Index">
                                                 <button type="submit" class="text-info" style="border: none; background-color: transparent;" title="Arşivle"><i class="ti-archive"></i></button>
                                             </form>
                                         </li>
                                         <li>
                                             <form action="/Admin/Message/MoveToTrash" method="POST" style="display: inline;">
                                                 <input type="hidden" name="Id" value="@message.Id">
+                                                <input type="hidden" name="ReturnUrl" value="/Admin/Message/Index">
                                                 <button type="submit" class="text-danger" style="border: none; background-color: transparent;" title="Sil"><i class="ti-trash"></i></button>
                                             </form>
                                         </li>

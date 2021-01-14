@@ -44,14 +44,16 @@
                                                 <a href="/Admin/Message/Read/@message.Id" class="text-success" title="Oku"><i class="ti-eye"></i></a>
                                             </li>
                                             <li class="mr-3">
-                                                <form action="/Admin/Message/MoveToArchive" method="POST" style="display: inline;">
+                                                <form action="/Admin/Message/MoveToInbox" method="POST" style="display: inline;">
                                                     <input type="hidden" name="Id" value="@message.Id">
-                                                    <button type="submit" class="text-info" style="border: none; background-color: transparent;" title="Arşivleden Çıkar"><del><i class="ti-archive"></i></del></button>
+                                                    <input type="hidden" name="ReturnUrl" value="/Admin/Message/Archive">
+                                                    <button type="submit" class="text-info" style="border: none; background-color: transparent;" title="Arşivden Çıkar"><del><i class="ti-archive"></i></del></button>
                                                 </form>
                                             </li>
                                             <li>
                                                 <form action="/Admin/Message/MoveToTrash" method="POST" style="display: inline;">
                                                     <input type="hidden" name="Id" value="@message.Id">
+                                                    <input type="hidden" name="ReturnUrl" value="/Admin/Message/Archive">
                                                     <button type="submit" class="text-danger" style="border: none; background-color: transparent;" title="Sil"><i class="ti-trash"></i></button>
                                                 </form>
                                             </li>

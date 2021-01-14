@@ -68,7 +68,7 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
                 IsArchived = entity.IsArchived,
                 IsDeleted = entity.IsDeleted
             };
-            ViewBag.PageId = 4.1;
+            ViewBag.PageId = 4;
             return View(model);
         }
 
@@ -91,7 +91,7 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult MoveToArchive(int Id)
+        public IActionResult MoveToArchive(int Id, string ReturnUrl)
         {
             var entity = _messageRepository.GetById(Id);
 
@@ -105,11 +105,11 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
             _messageRepository.Update(entity);
             CreateMessage($"{entity.Subject} arşivlendi.", "success");
             ViewBag.PageId = 4.2;
-            return Redirect("/Admin/Message/Read/" + Id);
+            return Redirect(ReturnUrl);
         }
 
         [HttpPost]
-        public IActionResult MoveToTrash(int Id)
+        public IActionResult MoveToTrash(int Id, string ReturnUrl)
         {
             var entity = _messageRepository.GetById(Id);
 
@@ -123,6 +123,44 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
             _messageRepository.Update(entity);
             CreateMessage($"{entity.Subject} çöp kutusuna taşındı.", "success");
             ViewBag.PageId = 4.3;
+            return Redirect(ReturnUrl);
+        }
+
+        [HttpPost]
+        public IActionResult MoveToInbox(int Id, string ReturnUrl)
+        {
+            var entity = _messageRepository.GetById(Id);
+
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
+            entity.IsArchived = false;
+            entity.IsDeleted = false;
+
+            _messageRepository.Update(entity);
+            CreateMessage($"{entity.Subject} gelen kutusuna taşındı.", "success");
+            ViewBag.PageId = 4.1;
+            return Redirect(ReturnUrl);
+        }
+
+        [HttpPost]
+        public IActionResult MoveToInboxRead(int Id)
+        {
+            var entity = _messageRepository.GetById(Id);
+
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
+            entity.IsArchived = false;
+            entity.IsDeleted = false;
+
+            _messageRepository.Update(entity);
+            CreateMessage($"{entity.Subject} gelen kutusuna taşındı.", "success");
+            ViewBag.PageId = 4.1;
             return Redirect("/Admin/Message/Read/" + Id);
         }
 

@@ -18,14 +18,36 @@
                         <input type="hidden" name="Id" value="@Model.Id">
                         <button type="submit" class="btn btn-kaydet btn-rounded btn-xs"><i class="ti-eye"></i>&nbsp; Okunmadı Say</button>
                     </form>
-                    <form action="/Admin/Message/MoveToArchive" method="POST" style="display: inline;">
-                        <input type="hidden" name="Id" value="@Model.Id">
-                        <button type="submit" class="btn btn-yeniekle btn-rounded btn-xs"><i class="ti-archive"></i>&nbsp; Arşivle</button>
-                    </form>
-                    <form action="/Admin/Message/MoveToTrash" method="POST" style="display: inline;">
-                        <input type="hidden" name="Id" value="@Model.Id">
-                        <button type="submit" class="btn btn-kirmizi btn-rounded btn-xs"><i class="ti-trash"></i>&nbsp; Çöp</button>
-                    </form>
+
+                    @if (Model.IsArchived)
+                    {
+                        <form action="/Admin/Message/MoveToInboxRead" method="POST" style="display: inline;">
+                            <input type="hidden" name="Id" value="@Model.Id">
+                            <input type="hidden" name="ReturnUrl" value="">
+                            <button type="submit" class="btn btn-yeniekle btn-rounded btn-xs"><i class="ti-archive"></i>&nbsp; Arşivden Çıkar</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form action="/Admin/Message/MoveToArchive" method="POST" style="display: inline;">
+                            <input type="hidden" name="Id" value="@Model.Id">
+                            <button type="submit" class="btn btn-yeniekle btn-rounded btn-xs"><i class="ti-archive"></i>&nbsp; Arşivle</button>
+                        </form>
+                    }
+                    @if (Model.IsDeleted)
+                    {
+                        <form action="/Admin/Message/MoveToInbox" method="POST" style="display: inline;">
+                            <input type="hidden" name="Id" value="@Model.Id">
+                            <button type="submit" class="btn btn-kirmizi btn-rounded btn-xs"><i class="ti-trash"></i>&nbsp; Çöpten Çıkar</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form action="/Admin/Message/MoveToTrash" method="POST" style="display: inline;">
+                            <input type="hidden" name="Id" value="@Model.Id">
+                            <button type="submit" class="btn btn-kirmizi btn-rounded btn-xs"><i class="ti-trash"></i>&nbsp; Çöp</button>
+                        </form>
+                    }
                 </div>
             </div>
         </div>
