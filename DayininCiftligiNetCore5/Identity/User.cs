@@ -10,5 +10,6 @@ namespace DayininCiftligiNetCore5.Identity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string ProfilePhoto { get; set; }
     }
 }
