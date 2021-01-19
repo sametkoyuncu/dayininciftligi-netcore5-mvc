@@ -6,11 +6,11 @@
     <partial name="_ResultMessage" model="@(TempData.Get<AlertMessageAdmin>("message"))" />
 }
 <!-- genel ayarlar start -->
-<div class="col-12 mt-5">
+<div class="col-12 mt-3">
     <div class="card">
         <div class="card-body">
             <h4 class="header-title">Logolar</h4>
-            <p class="text-muted font-14 mb-4">Bu kısımda sitenin logo ve favikonunu değiştirebilirsiniz.</p>
+            @*<p class="text-muted font-14 mb-4">Bu kısımda sitenin logo ve favikonunu değiştirebilirsiniz.</p>*@
             <hr>
             <form asp-area="Admin" asp-controller="WebsiteData" asp-action="LogosEdit" method="POST" enctype="multipart/form-data">
                 <input type="hidden" asp-for="Id">
@@ -60,11 +60,11 @@
 </div>
 <!-- genel ayarlar end -->
 <!-- meta etiketleri start -->
-<div class="col-12 mt-5 mb-5" id="metaetiketleri">
+<div class="col-12 mt-3 mb-5" id="metaetiketleri">
     <div class="card">
         <div class="card-body">
             <h4 class="header-title">Meta Etiketleri</h4>
-            <p class="text-muted font-14 mb-4">Bu kısımda meta etiketlerinizi düzenleyebilirsiniz.</p>
+            @*<p class="text-muted font-14 mb-4">Bu kısımda meta etiketlerinizi düzenleyebilirsiniz.</p>*@
             <hr>
             <form asp-area="Admin" asp-controller="WebsiteData" asp-action="MetaDataEdit" method="POST">
                 <input type="hidden" asp-for="Id">
