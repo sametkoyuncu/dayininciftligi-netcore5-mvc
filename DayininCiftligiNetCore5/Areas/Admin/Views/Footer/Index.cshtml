@@ -1,0 +1,94 @@
+﻿@model List<FooterWidget>
+
+@if (TempData["message"] != null)
+{
+    <partial name="_ResultMessage" model="@(TempData.Get<AlertMessageAdmin>("message"))" />
+}
+
+<div class="main-content-inner">
+    <!-- 1. bölüm start -->
+    <div class="col-12 mt-3" id="bir">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">1. Bölüm - Hakkımızda Özet</h4>
+                <p class="text-muted font-14 mb-4">Bu kısımda sitenin alt kısmında bulunan 1. (en soldaki) bölümü düzenleyebilirsiniz.</p>
+                <hr>
+                <form action="/Admin/Footer/Edit" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="Id" value="@Model[0].Id">
+                    <div class="form-row">
+                        <div class="col-md-4 text-center">
+                            <img src="~/admin/assets/images/footer/1.PNG" class="rounded" />
+                        </div>
+                        <div class="col-md-8">
+                            <div class="col-md-12 mb-3">
+                                <label for="validationCustom01">Başlık</label>
+                                <input class="form-control" name="Header" value="@Model[0].Header">
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="validationCustom01">Metin</label>
+                                <textarea class="form-control" name="Body" aria-label="With textarea">@Model[0].Body</textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-3 mb-3 text-center">
+                                    <img class="rounded-circle" src="~/img/logos/@Model[0].ImageUrl" alt="" width="75">
+                                </div>
+                                <div class="col-md-8 mb-3">
+                                    <label for="validationCustom01">Görsel</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-mor">Yeni Yükle</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="hidden" name="ImageUrl" value="@Model[0].ImageUrl">
+                                            <input type="file" name="fileImage" class="custom-file-input" id="inputGroupFile01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Görseli değişirmek için bir görsel seçiniz..</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-md-12 text-right">
+                        <button type="submit" class="btn btn-rounded btn-kaydet">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 1. bölüm end -->
+    <!-- 4. bölüm start -->
+    <div class="col-12 mt-3 mb-5" id="iki">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">4. Bölüm - Abone Kayıt</h4>
+                <p class="text-muted font-14 mb-4">Bu kısımda sitenin alt kısmında bulunan 4. (en sağdaki) bölümü düzenleyebilirsiniz.</p>
+                <hr>
+                <form action="/Admin/Footer/Edit" method="POST">
+                    <input type="hidden" name="Id" value="@Model[1].Id">
+                    <div class="form-row">
+                        <div class="col-md-4 text-center">
+                            <img src="~/admin/assets/images/footer/4.PNG" class="rounded" />
+                        </div>
+                        <div class="col-md-8">
+                            <div class="col-md-12 mb-3">
+                                <label for="validationCustom01">Başlık</label>
+                                <input class="form-control" name="Header" value="@Model[1].Header">
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="validationCustom01">Metin</label>
+                                <textarea class="form-control" name="Body" aria-label="With textarea">@Model[1].Body</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-auto text-right">
+                        <button type="submit" class="btn btn-rounded btn-kaydet">Kaydet</button>
+                    </div>
+</form>
+            </div>
+        </div>
+    </div>
+    <!-- 4. bölüm end -->
+</div>
+<!-- main content area end -->
