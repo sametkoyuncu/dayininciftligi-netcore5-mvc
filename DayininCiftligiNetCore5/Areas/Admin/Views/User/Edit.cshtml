@@ -1,0 +1,71 @@
+﻿@model User
+@if (TempData["message"] != null)
+{
+    <partial name="_ResultMessage" model="@(TempData.Get<AlertMessageAdmin>("message"))" />
+}
+<div class="main-content-inner">
+
+    <!-- row area start -- mt-5 üstte alan olduğu için gerekli -->
+    <div class="row mt-3">
+        <!-- Input Sizes start -->
+        <div class="col-10 mx-auto">
+            <div class="card">
+                <div class="modal-header bg-mor">
+                    <h4 class="header-title bej-yazi">Profili Düzenle</h4>
+                </div>
+                <form action="/Admin/User/Edit" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="Id">
+                    <div class="card-body">
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="UserName">Kullanıcı Adı</label>
+                            <input class="form-control" asp-for="UserName">
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="FirstName">Ad</label>
+                            <input class="form-control" asp-for="FirstName">
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="LastName">Soyad</label>
+                            <input class="form-control" asp-for="LastName">
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="Email">Eposta Adresi</label>
+                            <input class="form-control" asp-for="Email">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-row col-md-12 mb-3">
+                            <div class="col-md-9 mb-3">
+                                <label for="validationCustom01">Görsel</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-mor">Yeni Yükle</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="hidden" asp-for="ProfilePhoto">
+                                        <input type="file" name="fileImage" class="custom-file-input">
+                                        <label class="custom-file-label" for="inputGroupFile01">Değiştirmek için bir görsel seçiniz..</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3 text-center">
+                                <img src="~/admin/users/pp/@Model.ProfilePhoto" alt="" width="150px" padding: 7px;">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer bg-acik-gri">
+                        <a href="/Admin/User/Edit" class="btn btn-geri btn-rounded"><i class="ti-arrow-left"></i>&nbsp; Geri Dön</a>
+                        <button type="submit" class="btn btn-kaydet btn-rounded"><i class="ti-check"></i>&nbsp; Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Input Sizes end -->
+    </div>
+    <!-- row area end-->
+</div>
+    </div>
+<!-- main content area end -->
