@@ -86,6 +86,12 @@ namespace DayininCiftligiNetCore5.Controllers
             return Redirect("/Index#mesajgonder");
         }
 
+        public IActionResult NotFound(int code)
+        {
+            ViewBag.StatusCode = code;
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

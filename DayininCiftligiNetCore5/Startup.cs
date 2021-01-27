@@ -118,7 +118,10 @@ namespace DayininCiftligiNetCore5
                 app.UseHsts();
             }
 
+            app.UseStatusCodePagesWithReExecute("/Home/NotFound", "?code={0}");
+
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseAuthentication();
