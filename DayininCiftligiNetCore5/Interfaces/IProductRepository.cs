@@ -8,5 +8,6 @@ namespace DayininCiftligiNetCore5.Interfaces
 {
     public interface IProductRepository : IGenericRepository<Product>
     {
+        List<Product> GetVisibles();
     }
 }

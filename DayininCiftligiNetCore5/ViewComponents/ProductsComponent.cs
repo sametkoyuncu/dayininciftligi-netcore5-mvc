@@ -16,7 +16,7 @@ namespace DayininCiftligiNetCore5.ViewComponents
         }
         public IViewComponentResult Invoke()
         {
-            return View(_productRepository.GetAll());
+            return View(_productRepository.GetVisibles());
         }
     }
 }
