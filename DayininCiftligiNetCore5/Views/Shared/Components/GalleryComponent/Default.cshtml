@@ -1,6 +1,6 @@
 ﻿@model List<GalleryImage>
 <!--================ Galeri Area ====================-->
-@{ 
+@{
     var sectionData = ViewData["GalleryComponent"] as SectionModel;
 }
 <section class="galeri area-padding-top" id="galeri">
@@ -16,7 +16,7 @@
                 {
                     <div class="col-sm-6 col-md-4">
                         <a class="lightbox" href="@item.ImageUrl">
-                            <img src="~/img/gallery/@item.ImageUrl" alt="@item.ImageAltText">
+                            <img src="@item.ImageUrl" alt="@item.ImageAltText">
                         </a>
                     </div>
                 }
@@ -30,3 +30,9 @@
 </section>
 
 <!--================Galeri Area End==================-->
+
+    <!--Galeri js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.tz-gallery');
+    </script>

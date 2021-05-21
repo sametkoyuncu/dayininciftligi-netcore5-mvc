@@ -62,7 +62,7 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
             {
                 var extension = Path.GetExtension(fileImage.FileName);
                 var randomName = string.Format($"{Guid.NewGuid()}{extension}");
-                entity.ImageUrl = randomName;
+                entity.ImageUrl = "https://localhost:44385/img/gallery/" + randomName;
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\gallery", randomName);
 
                 using (var stream = new FileStream(path, FileMode.Create))
