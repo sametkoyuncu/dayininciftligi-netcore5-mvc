@@ -23,7 +23,7 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var model = _contactRepository.GetFirstVisible();
-            var section = _sectionRepository.GetById(14);
+            var section = _sectionRepository.GetById(4);
 
             ViewBag.Section = new SectionAdminModel()
             {

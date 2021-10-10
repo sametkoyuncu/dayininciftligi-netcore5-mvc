@@ -68,7 +68,7 @@ namespace DayininCiftligiNetCore5.Data
             new NavItem(){Name="Anasayfa", Url="giris", IsVisible=true},
             new NavItem(){Name="Ürünler", Url="urunler", IsVisible=true},
             new NavItem(){Name="Galeri", Url="galeri", IsVisible=true},
-            new NavItem(){Name="Blog", Url="blog", IsVisible=true},
+            new NavItem(){Name="Blog", Url="blog", IsVisible=false},
             new NavItem(){Name="İletişim", Url="iletisim", IsVisible=true},
         };
 
@@ -76,7 +76,7 @@ namespace DayininCiftligiNetCore5.Data
             new HomeBanner(){
                 Header="Hoş Geldiniz",
                 Text="Merhabalar, sitemizi kullanarak hakkımızda detaylı bilgiye ulaşabilir, bizimle irtibata geçebilir veya kendi ürettiğimiz doğal ürünlerden sipariş verebilirsiniz.",
-                BgImageUrl="img/theme/home-banner.jpg",
+                BgImageUrl="home-banner.jpg",
                 ButtonText="İLETİŞİME GEÇİN",
                 ButtonUrl="iletisim",
                 IsVisible=true
@@ -84,34 +84,34 @@ namespace DayininCiftligiNetCore5.Data
         };
 
         private static Product[] ProductsSeed = {
-            new Product(){Name="Kurbanlık", ImageUrl="img/theme/products/1.png", ImageAltText="Kurbanlık"},
-            new Product(){Name="Adaklık", ImageUrl="img/theme/products/2.png", ImageAltText="Adaklık"},
-            new Product(){Name="Günlük Süt", ImageUrl="img/theme/products/3.png", ImageAltText="Günlük Süt"},
-            new Product(){Name="Yumurta", ImageUrl="img/theme/products/4.png", ImageAltText="Yumurta"},
-            new Product(){Name="Sebze Meyve", ImageUrl="img/theme/products/5.png", ImageAltText="Sebze Meyve"}
+            new Product(){Name="Kurbanlık", ImageUrl="1.png", ImageAltText="Kurbanlık"},
+            new Product(){Name="Adaklık", ImageUrl="2.png", ImageAltText="Adaklık"},
+            new Product(){Name="Günlük Süt", ImageUrl="3.png", ImageAltText="Günlük Süt"},
+            new Product(){Name="Yumurta", ImageUrl="4.png", ImageAltText="Yumurta"},
+            new Product(){Name="Sebze Meyve", ImageUrl="5.png", ImageAltText="Sebze Meyve"}
         };
 
         private static GalleryImage[] GalleryImagesSeed = {
-            new GalleryImage(){ImageUrl="img/theme/images/1.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
-            new GalleryImage(){ImageUrl="img/theme/images/2.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
-            new GalleryImage(){ImageUrl="img/theme/images/3.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
-            new GalleryImage(){ImageUrl="img/theme/images/4.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
-            new GalleryImage(){ImageUrl="img/theme/images/5.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
-            new GalleryImage(){ImageUrl="img/theme/images/6.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
-            new GalleryImage(){ImageUrl="img/theme/images/7.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
-            new GalleryImage(){ImageUrl="img/theme/images/8.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
-            new GalleryImage(){ImageUrl="img/theme/images/9.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
-            new GalleryImage(){ImageUrl="img/theme/images/10.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
-            new GalleryImage(){ImageUrl="img/theme/images/11.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
-            new GalleryImage(){ImageUrl="img/theme/images/12.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
-            new GalleryImage(){ImageUrl="img/theme/images/13.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
-            new GalleryImage(){ImageUrl="img/theme/images/14.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
-            new GalleryImage(){ImageUrl="img/theme/images/15.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
-            new GalleryImage(){ImageUrl="img/theme/images/16.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
-            new GalleryImage(){ImageUrl="img/theme/images/17.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
-            new GalleryImage(){ImageUrl="img/theme/images/18.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
-            new GalleryImage(){ImageUrl="img/theme/images/19.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
-            new GalleryImage(){ImageUrl="img/theme/images/20.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true}
+            new GalleryImage(){ImageUrl="images/1.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
+            new GalleryImage(){ImageUrl="images/2.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
+            new GalleryImage(){ImageUrl="images/3.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
+            new GalleryImage(){ImageUrl="images/4.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
+            new GalleryImage(){ImageUrl="images/5.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
+            new GalleryImage(){ImageUrl="images/6.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
+            new GalleryImage(){ImageUrl="images/7.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
+            new GalleryImage(){ImageUrl="images/8.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
+            new GalleryImage(){ImageUrl="images/9.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
+            new GalleryImage(){ImageUrl="images/10.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
+            new GalleryImage(){ImageUrl="images/11.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
+            new GalleryImage(){ImageUrl="images/12.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
+            new GalleryImage(){ImageUrl="images/13.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
+            new GalleryImage(){ImageUrl="images/14.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
+            new GalleryImage(){ImageUrl="images/15.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
+            new GalleryImage(){ImageUrl="images/16.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
+            new GalleryImage(){ImageUrl="images/17.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
+            new GalleryImage(){ImageUrl="images/18.jpg", ImageAltText="Dayının Çiftliğinden Görseller"},
+            new GalleryImage(){ImageUrl="images/19.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true},
+            new GalleryImage(){ImageUrl="images/20.jpg", ImageAltText="Dayının Çiftliğinden Görseller", IsHome=true}
         };
 
         private static Contact[] ContactsSeed = {
@@ -129,7 +129,7 @@ namespace DayininCiftligiNetCore5.Data
         private static Section[] SectionsSeed = {
             new Section(){Name="Ürünler", ComponentName="ProductsComponent", Description="Ürünler", DisplayOrder=1},
             new Section(){Name="Galeri", ComponentName="GalleryComponent", Description="Dayının Çiftliğinden Görseller", ButtonText="Daha fazla görsel için tıklayınız -->", DisplayOrder=2},
-            new Section(){Name="Blog", ComponentName="BlogComponent", Description="Son eklenen yazılarımız..", ButtonText="Daha fazla yazı için tıklayınız -->", DisplayOrder=3},
+            new Section(){Name="Blog", ComponentName="BlogComponent", Description="Son eklenen yazılarımız..", ButtonText="Daha fazla yazı için tıklayınız -->", DisplayOrder=3, IsVisible=false},
             new Section(){Name="İletişim", ComponentName="ContactComponent", Description="İletişim", DisplayOrder=4}
         };
 
@@ -148,12 +148,12 @@ namespace DayininCiftligiNetCore5.Data
             new FooterWidget(){
                 Header="Hakkımızda",
                 Body="Dayının Çiftliği, İstanbul Şile'de kurbanlık, adaklık ve süt üretimi yapan bir aile işletmesidir.",
-                ImageUrl="theme/logo-foto.png",
                 IsVisible=true
             },
             new FooterWidget(){
                 Header="Haber Bülteni",
                 Body="Çiftliğimizden güncel haberler için haber bültenimize abone olabilirsiniz. (Örneğin: Kurban satışları vb.)",
+                ImageUrl="logo-foto.png",
                 IsVisible=true
             }
         };
@@ -167,8 +167,8 @@ namespace DayininCiftligiNetCore5.Data
                 Owner="Samet Koyuncu",
                 CopyrightForMeta="(c) 2020",
                 CopyrightForFooter="from DATABASE",
-                Favicon="theme/favicon.png",
-                Logo="theme/logo.png",
+                Favicon="favicon.png",
+                Logo="logo.png",
                 IsVisible=true
             }
         };

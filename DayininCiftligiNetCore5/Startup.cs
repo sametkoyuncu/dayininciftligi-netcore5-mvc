@@ -33,7 +33,7 @@ namespace DayininCiftligiNetCore5
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationContext>(options => 
-                options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=dayininciftligi; integrated security=true;"));
+                options.UseSqlServer("Server=(localdb)\\Zipla;Database=dayininciftligi; Integrated Security=true;"));
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationContext>()
                 .AddDefaultTokenProviders();

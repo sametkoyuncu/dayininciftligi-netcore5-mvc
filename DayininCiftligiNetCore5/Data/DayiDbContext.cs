@@ -16,7 +16,7 @@ namespace DayininCiftligiNetCore5.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=dayininciftligi; integrated security=true;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\Zipla;Database=dayininciftligi; Integrated Security=true;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
