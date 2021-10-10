@@ -6,10 +6,14 @@ dayininciftligi.com website
 
 - [Install .Net 5 SDK](https://dotnet.microsoft.com/download/dotnet/5.0)
 - [Install Visual Studio Express or Higher](https://visualstudio.microsoft.com/tr/downloads/)
-- Clone this repository:
-  git clone https://github.com/sametkoyuncu/dayininciftligi-netcore5-mvc.git`
+- Clone this repository
+
+```shell
+git clone https://github.com/sametkoyuncu/dayininciftligi-netcore5-mvc.git
+```
+
 - Open project with Visual Studio
-- Install this packages:
+- Install this packages
   ![Packages](https://github.com/sametkoyuncu/dayininciftligi-netcore5-mvc/blob/master/screenshots/Packages.png?raw=true)
 - Change Connection String in 'Data/DayiDbContext.cs' and 'Startup.cs' files
   @"Server=YOUR_SERVER_NAME;Database=dayininciftligi; Integrated Security=true;"`
