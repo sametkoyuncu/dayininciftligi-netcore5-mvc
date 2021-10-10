@@ -1,8 +1,10 @@
 # Dayının Çiftliği
 
-dayininciftligi.com website
+[Dayının Çiftliği](dayininciftligi.com) için ASP.NET Core ile hazırlamış olduğum yönetim panelli projem.\
 
-# Installation
+> Dayının Çiftliği İstanbul Şile'de kurbanlık, adaklık ve süt üretimi yapan bir aile işletmesidir.
+
+## Installation
 
 - [Install .Net 5 SDK](https://dotnet.microsoft.com/download/dotnet/5.0)
 - [Install Visual Studio Express or Higher](https://visualstudio.microsoft.com/tr/downloads/)
@@ -55,10 +57,18 @@ dotnet ef database update --context ApplicationContext
 - If edit email settings, system sent confirm url to your email. Click url and confirm your email or open 'AspNetUsers' table in your database. Change 'EmailConfirmed' cell 'true' for registered user. After then login to dashboard using [Login Page](https://localhost:44385/Login)
 - Now everything is okay, i hope 🙃
 
-# Lisence
+## Lisence
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-# Thanks for templates
+## Thanks for templates
 
-[Colorlib](https://colorlib.com/)
+[Colorlib ❤️](https://colorlib.com/)
+
+## Notes for me
+
+### admin paneli ürünler çalışmıyor (section düzenlemeleri)
+
+- sebebi section verileri çekilirken id'lerin elle giriliyor olması.
+- db yeniden seed'lendiği zaman id değerleri değiştiği için hata veriyor.
+- GetByComponentName gibi bir methodla düzeltilebilir. (ComponentName'ler db'de kayıtlı)
