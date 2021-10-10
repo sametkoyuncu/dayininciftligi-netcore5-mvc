@@ -58,3 +58,7 @@ dotnet ef database update --context ApplicationContext
 # Lisence
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+# Thanks for templates
+
+[Colorlib](https://colorlib.com/)
