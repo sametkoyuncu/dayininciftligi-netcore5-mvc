@@ -1,6 +1,6 @@
 # Dayının Çiftliği
 
-[Dayının Çiftliği](dayininciftligi.com) için ASP.NET Core ile hazırlamış olduğum yönetim panelli projem.\
+[Dayının Çiftliği](dayininciftligi.com) için ASP.NET Core ile hazırlamış olduğum yönetim panelli projem.
 
 > Dayının Çiftliği İstanbul Şile'de kurbanlık, adaklık ve süt üretimi yapan bir aile işletmesidir.
 
@@ -65,7 +65,7 @@ dotnet ef database update --context ApplicationContext
 
 [Colorlib ❤️](https://colorlib.com/)
 
-## Notes for me
+## Notes for me 📝
 
 ### admin paneli ürünler çalışmıyor (section düzenlemeleri)
 
