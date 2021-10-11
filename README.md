@@ -66,9 +66,4 @@ dotnet ef database update --context ApplicationContext
 [Colorlib ❤️](https://colorlib.com/)
 
 ## Notes for me 📝
-
-### admin paneli ürünler çalışmıyor (section düzenlemeleri)
-
-- sebebi section verileri çekilirken id'lerin elle giriliyor olması.
-- db yeniden seed'lendiği zaman id değerleri değiştiği için hata veriyor.
-- GetByComponentName gibi bir methodla düzeltilebilir. (ComponentName'ler db'de kayıtlı)
+(solved known bugs)
