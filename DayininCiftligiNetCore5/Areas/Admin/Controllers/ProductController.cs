@@ -26,7 +26,7 @@ namespace DayininCiftligiNetCore5.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var model = _productRepository.GetAll();
-            var section = _sectionRepository.GetById(3);
+            var section = _sectionRepository.GetByComponentName("ProductsComponent");
 
             ViewBag.Section = new SectionAdminModel()
             {

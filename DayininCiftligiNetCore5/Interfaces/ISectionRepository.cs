@@ -9,5 +9,6 @@ namespace DayininCiftligiNetCore5.Interfaces
     public interface ISectionRepository : IGenericRepository<Section>
     {
         List<Section> GetByDisplayOrder();
+        Section GetByComponentName(string ComponentName);
     }
 }
