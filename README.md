@@ -4,7 +4,7 @@
 
 > Dayının Çiftliği İstanbul Şile'de kurbanlık, adaklık ve süt üretimi yapan bir aile işletmesidir.
 
-[ekran görüntüsü 👇](https://github.com/sametkoyuncu/dayininciftligi-netcore5-mvc/blob/main/README.md#screenshots)
+[screenshot 👇](https://github.com/sametkoyuncu/dayininciftligi-netcore5-mvc/blob/master/README.md#screenshot)
 
 ## Installation
 
@@ -62,7 +62,7 @@ dotnet ef database update --context ApplicationContext
 ## Screenshot
 ![Homapage](https://github.com/sametkoyuncu/dayininciftligi-netcore5-mvc/blob/master/screenshots/dayininciftligi-home.png?raw=true)
 
-[daha fazlası için tıklayın 👆](https://github.com/sametkoyuncu/dayininciftligi-netcore5-mvc/tree/master/screenshots)
+[see more 👆](https://github.com/sametkoyuncu/dayininciftligi-netcore5-mvc/tree/master/screenshots)
 
 ## Lisence
 
