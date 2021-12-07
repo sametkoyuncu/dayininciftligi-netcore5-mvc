@@ -4,6 +4,8 @@
 
 > Dayının Çiftliği İstanbul Şile'de kurbanlık, adaklık ve süt üretimi yapan bir aile işletmesidir.
 
+[ekran görüntüsü 👇](https://github.com/sametkoyuncu/dayininciftligi-netcore5-mvc/blob/main/README.md#screenshots)
+
 ## Installation
 
 - [Install .Net 5 SDK](https://dotnet.microsoft.com/download/dotnet/5.0)
@@ -56,6 +58,11 @@ dotnet ef database update --context ApplicationContext
   [Register](https://localhost:44385/register)
 - If edit email settings, system sent confirm url to your email. Click url and confirm your email or open 'AspNetUsers' table in your database. Change 'EmailConfirmed' cell 'true' for registered user. After then login to dashboard using [Login Page](https://localhost:44385/Login)
 - Now everything is okay, i hope 🙃
+
+## Screenshot
+![Homapage](https://github.com/sametkoyuncu/dayininciftligi-netcore5-mvc/blob/master/screenshots/dayininciftligi-home.png?raw=true)
+
+[daha fazlası için tıklayın 👆](https://github.com/sametkoyuncu/dayininciftligi-netcore5-mvc/tree/master/screenshots)
 
 ## Lisence
 
